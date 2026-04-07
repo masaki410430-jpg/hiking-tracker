@@ -10,513 +10,393 @@
 :root{--bg:#080f0b;--card:#101e15;--card2:#162a1d;--bdr:#1e3a28;--txt:#e8f0ea;--dim:#6b9478;--acc:#4ade80;--acc2:#2dd4bf;--warn:#fbbf24;--dng:#ef4444;--good:#4ade80}
 body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--txt);min-height:100dvh}
 .app{max-width:480px;margin:0 auto;padding-bottom:60px}
-
-/* ===== SETUP SCREEN ===== */
-.setup-overlay{position:fixed;inset:0;background:var(--bg);z-index:200;overflow-y:auto;padding:20px 16px 40px}
-.setup-overlay h2{font-size:18px;color:var(--acc);margin-bottom:12px;text-align:center}
-.setup-section{background:var(--card);border:1px solid var(--bdr);border-radius:14px;padding:16px;margin-bottom:14px}
-.setup-section h3{font-size:13px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:6px}
-.setup-section p{font-size:12px;line-height:1.7;color:var(--dim);margin-bottom:8px}
-.setup-step{display:flex;gap:8px;margin-bottom:8px;font-size:12px;line-height:1.6}
-.setup-step .n{color:var(--acc);font-weight:700;flex-shrink:0;width:20px}
-.setup-step .t{color:var(--dim)}
-.setup-step .t b{color:var(--txt)}
-.gps-test-box{background:var(--card2);border-radius:10px;padding:12px;margin-top:10px;text-align:center}
-.gps-test-result{font-family:'DM Mono',monospace;font-size:11px;margin-top:8px;min-height:40px;color:var(--dim)}
-.gps-status-icon{font-size:32px;margin:8px 0}
-.tab-row{display:flex;gap:6px;margin-bottom:10px}
-.tab-btn{flex:1;padding:8px;border:1px solid var(--bdr);border-radius:8px;background:var(--card);color:var(--dim);font-size:11px;font-weight:600;cursor:pointer;text-align:center;font-family:'Noto Sans JP',sans-serif}
-.tab-btn.active{background:rgba(74,222,128,.1);color:var(--acc);border-color:rgba(74,222,128,.3)}
-.tab-content{display:none}.tab-content.active{display:block}
-
-/* Settings */
-.setting-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--bdr)}
-.setting-row:last-child{border-bottom:none}
-.setting-row .slbl{font-size:12px}
-.setting-row .sdesc{font-size:10px;color:var(--dim)}
-.setting-row input,.setting-row select{background:var(--card2);border:1px solid var(--bdr);border-radius:8px;color:var(--txt);padding:6px 10px;font-size:13px;font-family:'DM Mono',monospace;width:90px;text-align:center}
-.setting-row select{width:auto;font-family:'Noto Sans JP',sans-serif;font-size:12px}
-.sunset-auto{background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.12);border-radius:10px;padding:10px;margin-top:8px;text-align:center}
-.sunset-auto .sv{font-family:'DM Mono',monospace;font-size:22px;color:var(--warn);margin:4px 0}
-.sunset-auto .sl{font-size:10px;color:var(--dim)}
-
-.btn{padding:14px;border:none;border-radius:12px;font-family:'Noto Sans JP',sans-serif;font-size:14px;font-weight:700;cursor:pointer;width:100%;margin-top:8px}
+/* Setup */
+.setup{position:fixed;inset:0;background:var(--bg);z-index:200;overflow-y:auto;padding:20px 16px 40px}
+.setup h2{font-size:18px;color:var(--acc);margin-bottom:12px;text-align:center}
+.sbox{background:var(--card);border:1px solid var(--bdr);border-radius:14px;padding:14px;margin-bottom:12px}
+.sbox h3{font-size:13px;font-weight:700;margin-bottom:8px}
+.sbox p{font-size:12px;line-height:1.7;color:var(--dim);margin-bottom:6px}
+.step{display:flex;gap:8px;margin-bottom:6px;font-size:12px;line-height:1.5}
+.step .n{color:var(--acc);font-weight:700;width:18px;flex-shrink:0}
+.step .t{color:var(--dim)}.step .t b{color:var(--txt)}
+.tabr{display:flex;gap:6px;margin-bottom:8px}
+.tabb{flex:1;padding:7px;border:1px solid var(--bdr);border-radius:8px;background:var(--card);color:var(--dim);font-size:11px;font-weight:600;cursor:pointer;text-align:center;font-family:'Noto Sans JP',sans-serif}
+.tabb.on{background:rgba(74,222,128,.1);color:var(--acc);border-color:rgba(74,222,128,.3)}
+.tabc{display:none}.tabc.on{display:block}
+.gtest{background:var(--card2);border-radius:10px;padding:10px;margin-top:8px;text-align:center}
+.gtest-r{font-family:'DM Mono',monospace;font-size:11px;margin-top:6px;min-height:36px;color:var(--dim)}
+.sunauto{background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.12);border-radius:10px;padding:10px;margin-top:6px;text-align:center}
+.sunauto .sv{font-family:'DM Mono',monospace;font-size:22px;color:var(--warn);margin:4px 0}
+.sunauto .sl{font-size:10px;color:var(--dim)}
+.srow{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--bdr)}
+.srow:last-child{border-bottom:none}
+.srow .sl{font-size:12px}.srow .sd{font-size:10px;color:var(--dim)}
+.srow input,.srow select{background:var(--card2);border:1px solid var(--bdr);border-radius:8px;color:var(--txt);padding:5px 8px;font-size:13px;font-family:'DM Mono',monospace;width:85px;text-align:center}
+.srow select{width:auto;font-family:'Noto Sans JP',sans-serif;font-size:11px}
+.btn{padding:14px;border:none;border-radius:12px;font-family:'Noto Sans JP',sans-serif;font-size:14px;font-weight:700;cursor:pointer;width:100%;margin-top:6px}
 .btn:active{transform:scale(.97)}
-.btn-go{background:var(--acc);color:var(--bg)}
-.btn-test{background:var(--card2);color:var(--acc);border:1.5px solid rgba(74,222,128,.3)}
-.btn-skip{background:transparent;color:var(--dim);border:1px solid var(--bdr);margin-top:6px}
-.btn-sm{padding:10px;font-size:12px}
-
-/* ===== MAIN APP (same as before but condensed) ===== */
-.hdr{padding:14px 16px 10px;background:linear-gradient(180deg,#0d1f12,transparent);position:sticky;top:0;z-index:10;backdrop-filter:blur(8px)}
+.btn-go{background:var(--acc);color:var(--bg)}.btn-test{background:var(--card2);color:var(--acc);border:1.5px solid rgba(74,222,128,.3);padding:10px;font-size:12px}
+.btn-skip{background:transparent;color:var(--dim);border:1px solid var(--bdr)}
+/* Main */
+.hdr{padding:12px 16px 8px;background:linear-gradient(180deg,#0d1f12,transparent);position:sticky;top:0;z-index:10;backdrop-filter:blur(8px)}
 .hdr-row{display:flex;justify-content:space-between;align-items:center}
-.hdr h1{font-size:13px;font-weight:700;color:var(--acc)}
-.hdr .sub{font-size:10px;color:var(--dim);margin-top:1px}
-.badge{font-family:'DM Mono',monospace;font-size:10px;padding:3px 8px;border-radius:12px;background:rgba(74,222,128,.1);color:var(--acc);border:1px solid rgba(74,222,128,.15);cursor:pointer}
-.gps-badge{display:flex;align-items:center;gap:4px}
-.gps-dot{width:6px;height:6px;border-radius:50%;background:var(--dng)}
-.gps-dot.on{background:var(--acc);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-.sun-bar{margin:0 16px 10px;padding:10px 14px;background:linear-gradient(135deg,rgba(251,191,36,.07),rgba(239,68,68,.05));border:1px solid rgba(251,191,36,.12);border-radius:12px;display:flex;justify-content:space-between;align-items:center;font-size:11px}
-.sun-bar .lbl{color:var(--warn)}.sun-bar .val{font-family:'DM Mono',monospace;font-weight:600;font-size:14px}
-.gps-info{margin:0 16px 10px;padding:8px 12px;background:rgba(74,222,128,.04);border:1px solid rgba(74,222,128,.1);border-radius:10px;font-size:10px;color:var(--dim);display:flex;justify-content:space-between;align-items:center}
-.gps-info .gv{font-family:'DM Mono',monospace;color:var(--acc)}
-.hero-row{display:flex;gap:8px;padding:0 16px 10px}
-.hbox{flex:1;background:var(--card);border:1px solid var(--bdr);border-radius:14px;padding:10px 8px;text-align:center}
-.hbox .l{font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:2px}
-.hbox .v{font-family:'DM Mono',monospace;font-size:28px;font-weight:500;line-height:1.15}
-.hbox .u{font-size:9px;color:var(--dim)}
-.compare{margin:0 16px 10px;padding:12px;background:var(--card);border:1px solid var(--bdr);border-radius:14px}
-.compare h4{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:8px}
-.ctrack{position:relative;height:28px;background:var(--card2);border-radius:6px;overflow:hidden;margin-bottom:4px}
-.cfill{position:absolute;left:0;height:50%;transition:width 1s}
-.cfill.ideal{top:0;background:rgba(74,222,128,.15);border-right:2px solid var(--acc)}
-.cfill.you{top:50%;background:rgba(45,212,191,.15);border-right:2px solid var(--acc2)}
-.cleg{display:flex;gap:12px;font-size:10px;margin-top:6px}
-.cleg span{display:flex;align-items:center;gap:3px}
-.cleg .d{width:7px;height:7px;border-radius:50%}
-.cleg .d.i{background:var(--acc)}.cleg .d.y{background:var(--acc2)}
-.cmsg{text-align:center;margin-top:6px;font-size:12px;font-weight:600}
-.pqual{margin:0 16px 10px;padding:10px 12px;background:var(--card);border:1px solid var(--bdr);border-radius:12px}
-.pqual .btrack{height:6px;background:linear-gradient(90deg,var(--dng) 0%,var(--warn) 25%,var(--good) 50%,var(--warn) 75%,var(--dng) 100%);border-radius:3px;position:relative;margin:5px 0}
-.pqual .bmark{position:absolute;top:-5px;width:14px;height:14px;background:#fff;border-radius:50%;border:3px solid var(--bg);transform:translateX(-50%);transition:left .8s;box-shadow:0 0 6px rgba(255,255,255,.3);display:none}
-.pqual .blbl{display:flex;justify-content:space-between;font-size:9px;color:var(--dim)}
-.pqual .pst{text-align:center;margin-top:5px;font-size:11px;font-weight:600}
-.stats{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;padding:0 16px 10px}
-.st{background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:7px 5px;text-align:center}
-.st .l{font-size:8px;text-transform:uppercase;letter-spacing:.06em;color:var(--dim);margin-bottom:1px}
-.st .v{font-family:'DM Mono',monospace;font-size:14px;font-weight:500}
-.st .u{font-size:8px;color:var(--dim)}
-.pacing{margin:0 16px 10px;padding:12px;background:var(--card);border:1px solid var(--bdr);border-radius:14px}
-.pacing h4{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:8px}
-.pacing-bar{display:flex;gap:2px;height:20px;margin-bottom:6px}
-.pacing-seg{border-radius:3px;transition:all .3s}
-.energy-row{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
-.energy-lbl{font-size:10px;color:var(--dim)}
-.energy-bar{flex:1;height:8px;background:var(--card2);border-radius:4px;margin:0 8px;overflow:hidden}
-.energy-fill{height:100%;border-radius:4px;transition:width .5s}
-.energy-val{font-family:'DM Mono',monospace;font-size:11px;font-weight:500}
-.half-compare{display:flex;gap:8px;margin-top:8px}
-.half-box{flex:1;padding:6px;background:var(--card2);border-radius:8px;text-align:center;font-size:10px}
-.half-box .hv{font-family:'DM Mono',monospace;font-size:16px;font-weight:500;margin:2px 0}
-.elev-sec{padding:0 16px 10px}
-.elev-sec h3{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:6px}
-.elev-wrap{background:var(--card);border:1px solid var(--bdr);border-radius:14px;padding:10px;height:100px}
-.elev-wrap canvas{width:100%;height:100%}
-.rest-card{margin:0 16px 10px;padding:12px;background:linear-gradient(135deg,rgba(45,212,191,.06),rgba(74,222,128,.03));border:1px solid rgba(45,212,191,.12);border-radius:14px}
-.rest-card h4{font-size:11px;color:var(--acc2);margin-bottom:6px}
-.rest-card .rv{font-family:'DM Mono',monospace;font-size:26px;font-weight:500;color:var(--acc2);text-align:center;margin:6px 0}
-.rest-card .rd{font-size:11px;color:var(--dim);text-align:center;line-height:1.6}
-.rest-card .rw{font-size:11px;color:var(--warn);text-align:center;margin-top:4px}
-.cp-sec{padding:0 16px 10px}
-.cp-sec h3{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:8px}
-.cp{display:flex;gap:10px;min-height:48px}
-.cp-tk{display:flex;flex-direction:column;align-items:center;width:20px;flex-shrink:0}
-.cp-dot{width:18px;height:18px;border-radius:50%;background:var(--card);border:2px solid var(--bdr);display:flex;align-items:center;justify-content:center;z-index:1;flex-shrink:0}
-.cp-ln{flex:1;width:2px;background:var(--bdr);min-height:6px}
-.cp.passed .cp-dot{background:var(--acc);border-color:var(--acc)}
-.cp.passed .cp-ln{background:var(--acc)}
-.cp.current .cp-dot{border-color:var(--acc);box-shadow:0 0 8px rgba(74,222,128,.4)}
-.cp.future{opacity:.4}
-.cp-dot svg{width:8px;height:8px}
-.cp-bd{flex:1;padding-bottom:8px;min-width:0}
-.cp-top{display:flex;justify-content:space-between;align-items:center;gap:4px}
-.cp-nm{font-size:11px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.cp-mt{font-size:9px;color:var(--dim);font-family:'DM Mono',monospace;margin-top:1px}
-.cp-tgt{font-size:9px;color:var(--acc);margin-top:1px}
-.cp-res{font-size:9px;margin-top:2px;padding:2px 6px;border-radius:4px;background:rgba(74,222,128,.06);display:inline-block}
-.btn-arr{padding:4px 10px;border:1.5px solid var(--acc);border-radius:14px;background:rgba(74,222,128,.08);color:var(--acc);font-family:'Noto Sans JP',sans-serif;font-size:10px;font-weight:600;cursor:pointer;white-space:nowrap;flex-shrink:0}
-.btn-arr:active{background:var(--acc);color:var(--bg);transform:scale(.95)}
-.cp.future .btn-arr{display:none}
-.cp-stamp{font-family:'DM Mono',monospace;font-size:9px;color:var(--acc);white-space:nowrap}
-.ctrls{padding:8px 16px;display:flex;gap:8px}
-.cbtn{flex:1;padding:14px;border:none;border-radius:12px;font-family:'Noto Sans JP',sans-serif;font-size:14px;font-weight:700;cursor:pointer}
-.cbtn:active{transform:scale(.97)}
-.cbtn-go{background:var(--acc);color:var(--bg)}
-.cbtn-pause{background:rgba(239,68,68,.12);color:var(--dng);border:1px solid rgba(239,68,68,.25)}
-.cbtn-rst{background:var(--card);color:var(--dim);border:1px solid var(--bdr);flex:.4}
+.hdr h1{font-size:13px;font-weight:700;color:var(--acc)}.hdr .sub{font-size:10px;color:var(--dim)}
+.bdg{font-family:'DM Mono',monospace;font-size:10px;padding:2px 7px;border-radius:10px;background:rgba(74,222,128,.1);color:var(--acc);border:1px solid rgba(74,222,128,.15);cursor:pointer}
+.gps-b{display:flex;align-items:center;gap:4px}
+.gd{width:6px;height:6px;border-radius:50%;background:var(--dng)}.gd.on{background:var(--acc);animation:pu 2s infinite}
+@keyframes pu{0%,100%{opacity:1}50%{opacity:.3}}
+.sunb{margin:0 16px 8px;padding:8px 12px;background:linear-gradient(135deg,rgba(251,191,36,.07),rgba(239,68,68,.05));border:1px solid rgba(251,191,36,.12);border-radius:12px;display:flex;justify-content:space-between;align-items:center;font-size:11px}
+.sunb .sl{color:var(--warn)}.sunb .sv{font-family:'DM Mono',monospace;font-weight:600;font-size:14px}
+.gi{margin:0 16px 8px;padding:6px 10px;background:rgba(74,222,128,.04);border:1px solid rgba(74,222,128,.1);border-radius:10px;font-size:10px;color:var(--dim);display:none;justify-content:space-between}
+.gi .gv{font-family:'DM Mono',monospace;color:var(--acc)}
+.hr{display:flex;gap:6px;padding:0 16px 8px}
+.hb{flex:1;background:var(--card);border:1px solid var(--bdr);border-radius:12px;padding:8px 6px;text-align:center}
+.hb .l{font-size:8px;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);margin-bottom:1px}
+.hb .v{font-family:'DM Mono',monospace;font-size:26px;font-weight:500;line-height:1.1}
+.hb .u{font-size:8px;color:var(--dim)}
+.cmp{margin:0 16px 8px;padding:10px;background:var(--card);border:1px solid var(--bdr);border-radius:12px}
+.cmp h4{font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:6px}
+.ct{position:relative;height:24px;background:var(--card2);border-radius:5px;overflow:hidden;margin-bottom:3px}
+.cf{position:absolute;left:0;height:50%;transition:width 1s}
+.cf.i{top:0;background:rgba(74,222,128,.15);border-right:2px solid var(--acc)}
+.cf.y{top:50%;background:rgba(45,212,191,.15);border-right:2px solid var(--acc2)}
+.cl{display:flex;gap:10px;font-size:9px;margin-top:4px}.cl span{display:flex;align-items:center;gap:3px}
+.cl .dd{width:6px;height:6px;border-radius:50%}.cl .dd.i{background:var(--acc)}.cl .dd.y{background:var(--acc2)}
+.cm{text-align:center;margin-top:4px;font-size:11px;font-weight:600}
+.pq{margin:0 16px 8px;padding:8px 10px;background:var(--card);border:1px solid var(--bdr);border-radius:10px}
+.pq .bt{height:5px;background:linear-gradient(90deg,var(--dng),var(--warn) 25%,var(--good) 50%,var(--warn) 75%,var(--dng));border-radius:3px;position:relative;margin:4px 0}
+.pq .bm{position:absolute;top:-5px;width:13px;height:13px;background:#fff;border-radius:50%;border:3px solid var(--bg);transform:translateX(-50%);transition:left .8s;box-shadow:0 0 5px rgba(255,255,255,.3);display:none}
+.pq .bl{display:flex;justify-content:space-between;font-size:8px;color:var(--dim)}
+.pq .ps{text-align:center;margin-top:4px;font-size:10px;font-weight:600}
+.sts{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:5px;padding:0 16px 8px}
+.s{background:var(--card);border:1px solid var(--bdr);border-radius:8px;padding:6px 4px;text-align:center}
+.s .l{font-size:7px;text-transform:uppercase;letter-spacing:.06em;color:var(--dim)}.s .v{font-family:'DM Mono',monospace;font-size:13px;font-weight:500}.s .u{font-size:7px;color:var(--dim)}
+/* Recommended Pace Table */
+.rpt{margin:0 16px 8px;padding:10px;background:var(--card);border:1px solid var(--bdr);border-radius:12px}
+.rpt h4{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:6px}
+.rpt-desc{font-size:10px;color:var(--dim);margin-bottom:8px;line-height:1.6}
+.rpt table{width:100%;border-collapse:collapse;font-size:9px}
+.rpt th{text-align:left;padding:4px 3px;color:var(--dim);font-weight:400;border-bottom:1px solid var(--bdr)}
+.rpt td{padding:4px 3px;border-bottom:1px solid rgba(30,58,40,.3);font-family:'DM Mono',monospace}
+.rpt .terrain-up{color:var(--dng)}.rpt .terrain-down{color:var(--acc2)}.rpt .terrain-flat{color:var(--acc)}
+.rpt .rest-row{background:rgba(45,212,191,.06)}
+.rpt .rest-row td{color:var(--acc2);font-family:'Noto Sans JP',sans-serif;font-weight:600}
+/* Route Map */
+.map-sec{margin:0 16px 8px}
+.map-sec h3{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:6px}
+.map-wrap{background:var(--card);border:1px solid var(--bdr);border-radius:14px;padding:8px;overflow:hidden}
+.map-wrap svg{width:100%;height:auto;display:block}
+/* Pacing */
+.pac{margin:0 16px 8px;padding:10px;background:var(--card);border:1px solid var(--bdr);border-radius:12px}
+.pac h4{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:6px}
+.pb{display:flex;gap:2px;height:18px;margin-bottom:4px}.ps2{border-radius:3px}
+.er{display:flex;justify-content:space-between;align-items:center;margin-top:6px}.el2{font-size:10px;color:var(--dim)}
+.eb{flex:1;height:7px;background:var(--card2);border-radius:4px;margin:0 6px;overflow:hidden}
+.ef{height:100%;border-radius:4px;transition:width .5s}.ev{font-family:'DM Mono',monospace;font-size:10px}
+.hc{display:flex;gap:6px;margin-top:6px}.hcb{flex:1;padding:5px;background:var(--card2);border-radius:6px;text-align:center;font-size:9px}
+.hcb .hv2{font-family:'DM Mono',monospace;font-size:14px;font-weight:500;margin:1px 0}
+.pa2{text-align:center;margin-top:4px;font-size:10px;font-weight:600}
+/* Elev */
+.esec{padding:0 16px 8px}.esec h3{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:6px}
+.ewrap{background:var(--card);border:1px solid var(--bdr);border-radius:14px;padding:8px;position:relative}
+.ewrap canvas{width:100%;height:90px;display:block}
+/* Rest */
+.rc{margin:0 16px 8px;padding:10px;background:linear-gradient(135deg,rgba(45,212,191,.06),rgba(74,222,128,.03));border:1px solid rgba(45,212,191,.12);border-radius:12px}
+.rc h4{font-size:11px;color:var(--acc2);margin-bottom:4px}.rc .rv{font-family:'DM Mono',monospace;font-size:24px;font-weight:500;color:var(--acc2);text-align:center;margin:4px 0}
+.rc .rd{font-size:10px;color:var(--dim);text-align:center;line-height:1.5}.rc .rw{font-size:10px;color:var(--warn);text-align:center;margin-top:3px}
+/* CP */
+.cps{padding:0 16px 8px}.cps h3{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:6px}
+.cp{display:flex;gap:8px;min-height:44px}.cptk{display:flex;flex-direction:column;align-items:center;width:18px;flex-shrink:0}
+.cpd{width:16px;height:16px;border-radius:50%;background:var(--card);border:2px solid var(--bdr);display:flex;align-items:center;justify-content:center;z-index:1;flex-shrink:0}
+.cpl{flex:1;width:2px;background:var(--bdr);min-height:4px}
+.cp.p .cpd{background:var(--acc);border-color:var(--acc)}.cp.p .cpl{background:var(--acc)}
+.cp.c .cpd{border-color:var(--acc);box-shadow:0 0 6px rgba(74,222,128,.4)}.cp.f{opacity:.4}
+.cpd svg{width:7px;height:7px}
+.cpb{flex:1;padding-bottom:6px;min-width:0}.cpt{display:flex;justify-content:space-between;align-items:center;gap:4px}
+.cpn{font-size:10px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cpm{font-size:8px;color:var(--dim);font-family:'DM Mono',monospace;margin-top:1px}
+.cptg{font-size:8px;color:var(--acc);margin-top:1px}
+.cpr{font-size:8px;margin-top:2px;padding:2px 5px;border-radius:3px;background:rgba(74,222,128,.06);display:inline-block}
+.ba{padding:3px 9px;border:1.5px solid var(--acc);border-radius:12px;background:rgba(74,222,128,.08);color:var(--acc);font-family:'Noto Sans JP',sans-serif;font-size:10px;font-weight:600;cursor:pointer;white-space:nowrap;flex-shrink:0}
+.ba:active{background:var(--acc);color:var(--bg);transform:scale(.95)}.cp.f .ba{display:none}
+.cps2{font-family:'DM Mono',monospace;font-size:8px;color:var(--acc);white-space:nowrap}
+.ctrls{padding:6px 16px;display:flex;gap:6px}
+.cb{flex:1;padding:12px;border:none;border-radius:10px;font-family:'Noto Sans JP',sans-serif;font-size:13px;font-weight:700;cursor:pointer}
+.cb:active{transform:scale(.97)}.cg{background:var(--acc);color:var(--bg)}.cpau{background:rgba(239,68,68,.12);color:var(--dng);border:1px solid rgba(239,68,68,.25)}.crs{background:var(--card);color:var(--dim);border:1px solid var(--bdr);flex:.4}
 .hidden{display:none!important}
-.info{margin:0 16px 10px;padding:10px 12px;background:var(--card);border:1px solid var(--bdr);border-radius:14px}
-.info h4{font-size:11px;font-weight:700;margin-bottom:5px;color:var(--acc)}
-.info p{font-size:11px;line-height:1.7;color:var(--dim)}
-.info .hl{color:var(--txt);font-weight:600}
-.complete{margin:0 16px 10px;padding:20px;background:linear-gradient(135deg,rgba(74,222,128,.12),rgba(45,212,191,.08));border:1px solid rgba(74,222,128,.25);border-radius:16px;text-align:center}
-.complete h2{font-size:18px;margin-bottom:4px}
-.complete .big{font-family:'DM Mono',monospace;font-size:36px;color:var(--acc);margin:8px 0}
-.complete p{font-size:11px;color:var(--dim);line-height:1.6}
+.inf{margin:0 16px 8px;padding:8px 10px;background:var(--card);border:1px solid var(--bdr);border-radius:12px}
+.inf h4{font-size:10px;font-weight:700;margin-bottom:4px;color:var(--acc)}.inf p{font-size:10px;line-height:1.6;color:var(--dim)}.inf .hl{color:var(--txt);font-weight:600}
+.comp{margin:0 16px 8px;padding:16px;background:linear-gradient(135deg,rgba(74,222,128,.12),rgba(45,212,191,.08));border:1px solid rgba(74,222,128,.25);border-radius:14px;text-align:center}
+.comp h2{font-size:16px}.comp .big{font-family:'DM Mono',monospace;font-size:32px;color:var(--acc);margin:6px 0}.comp p{font-size:10px;color:var(--dim);line-height:1.5}
 </style>
 </head>
 <body>
 
-<!-- ========== SETUP SCREEN ========== -->
-<div class="setup-overlay" id="setupScreen">
-  <h2>⛰ 初期設定</h2>
-
-  <!-- GPS Setup Guide -->
-  <div class="setup-section">
-    <h3>📍 GPS設定ガイド</h3>
-    <p>登山中のリアルタイム速度・標高表示にはGPSが必要です。<br>以下の手順で位置情報を有効にしてください。</p>
-
-    <div class="tab-row">
-      <div class="tab-btn active" onclick="showTab('android')">Android</div>
-      <div class="tab-btn" onclick="showTab('iphone')">iPhone</div>
-    </div>
-
-    <div class="tab-content active" id="tab-android">
-      <div class="setup-step"><span class="n">1</span><span class="t"><b>設定アプリ</b>を開く</span></div>
-      <div class="setup-step"><span class="n">2</span><span class="t"><b>「位置情報」</b>をタップ → ONにする</span></div>
-      <div class="setup-step"><span class="n">3</span><span class="t"><b>「アプリの権限」</b>をタップ</span></div>
-      <div class="setup-step"><span class="n">4</span><span class="t">使用中のブラウザ（<b>Chrome</b>等）をタップ</span></div>
-      <div class="setup-step"><span class="n">5</span><span class="t"><b>「アプリの使用中のみ許可」</b>を選択</span></div>
-      <div class="setup-step"><span class="n">6</span><span class="t">ブラウザに戻り、このページを<b>再読み込み</b></span></div>
-      <p style="margin-top:8px;font-size:11px;color:var(--warn)">⚠ Claudeアプリ内では動きません。<b>ChromeまたはSafari</b>でこのファイルを直接開いてください。</p>
-    </div>
-
-    <div class="tab-content" id="tab-iphone">
-      <div class="setup-step"><span class="n">1</span><span class="t"><b>設定アプリ</b>を開く</span></div>
-      <div class="setup-step"><span class="n">2</span><span class="t"><b>「プライバシーとセキュリティ」</b>をタップ</span></div>
-      <div class="setup-step"><span class="n">3</span><span class="t"><b>「位置情報サービス」</b>をタップ → ONにする</span></div>
-      <div class="setup-step"><span class="n">4</span><span class="t"><b>Safari</b>（またはChrome）をタップ</span></div>
-      <div class="setup-step"><span class="n">5</span><span class="t"><b>「このAppの使用中に許可」</b>を選択</span></div>
-      <div class="setup-step"><span class="n">6</span><span class="t">ブラウザに戻り、このページを<b>再読み込み</b></span></div>
-      <p style="margin-top:8px;font-size:11px;color:var(--warn)">⚠ 以前「許可しない」を選んだ場合は上記手順で再許可が必要です。</p>
-    </div>
-
-    <!-- GPS Test -->
-    <div class="gps-test-box">
-      <button class="btn btn-test btn-sm" onclick="testGPS()">📡 GPSテスト実行</button>
-      <div class="gps-test-result" id="gpsTestResult">ボタンを押してGPSが使えるか確認</div>
-    </div>
-  </div>
-
-  <!-- Sunset Auto Calc -->
-  <div class="setup-section">
-    <h3>🌅 日没時刻（自動計算）</h3>
-    <p>現在の日付と位置情報から日没時刻を自動で計算します。GPSが取れない場合は北九州市の座標を使用します。</p>
-    <div class="sunset-auto">
-      <div class="sl" id="sunsetDateLabel">計算中...</div>
-      <div class="sv" id="sunsetAutoVal">--:--</div>
-      <div class="sl" id="sunsetLocLabel">位置: 北九州市（デフォルト）</div>
-    </div>
-    <div class="setting-row" style="margin-top:10px">
-      <div><div class="slbl">手動で変更</div><div class="sdesc">自動計算を上書き</div></div>
-      <input type="time" id="sunsetManual" value="" placeholder="--:--" onchange="onSunsetManualChange()">
-    </div>
-  </div>
-
-  <!-- Settings -->
-  <div class="setup-section">
-    <h3>⚙️ 登山設定</h3>
-    <div class="setting-row">
-      <div><div class="slbl">下山マージン</div><div class="sdesc">日没の何分前に下山するか</div></div>
-      <select id="setMargin">
-        <option value="15">15分前</option>
-        <option value="30" selected>30分前</option>
-        <option value="45">45分前</option>
-        <option value="60">60分前</option>
-      </select>
-    </div>
-    <div class="setting-row">
-      <div><div class="slbl">出発予定時刻</div><div class="sdesc">計画の基準時刻</div></div>
-      <input type="time" id="setDepart" value="06:00">
-    </div>
-    <div class="setting-row">
-      <div><div class="slbl">体力レベル</div><div class="sdesc">ペース基準に反映</div></div>
-      <select id="setFitness">
-        <option value="slow">ゆっくり（標準の1.2倍）</option>
-        <option value="normal" selected>標準</option>
-        <option value="fast">健脚（標準の0.8倍）</option>
-      </select>
-    </div>
-  </div>
-
-  <button class="btn btn-go" onclick="startApp()">✅ 設定完了 → トラッカーを開く</button>
-  <button class="btn btn-skip" onclick="startApp()">設定をスキップ（デフォルトで開始）</button>
+<!-- SETUP -->
+<div class="setup" id="setupScreen">
+<h2>⛰ 初期設定</h2>
+<div class="sbox"><h3>📍 GPS設定</h3><p>速度・標高にGPSが必要です。Claudeアプリ内では動きません。<b>ChromeかSafari</b>で開いてください。</p>
+<div class="tabr"><div class="tabb on" onclick="stab('android',this)">Android</div><div class="tabb" onclick="stab('iphone',this)">iPhone</div></div>
+<div class="tabc on" id="tab-android">
+<div class="step"><span class="n">1</span><span class="t"><b>設定</b>→<b>位置情報</b>→ ON</span></div>
+<div class="step"><span class="n">2</span><span class="t"><b>アプリの権限</b>→ Chrome →<b>使用中のみ許可</b></span></div>
+<div class="step"><span class="n">3</span><span class="t">このページを<b>再読み込み</b></span></div>
+</div>
+<div class="tabc" id="tab-iphone">
+<div class="step"><span class="n">1</span><span class="t"><b>設定</b>→<b>プライバシー</b>→<b>位置情報</b>→ ON</span></div>
+<div class="step"><span class="n">2</span><span class="t">Safari →<b>使用中に許可</b></span></div>
+<div class="step"><span class="n">3</span><span class="t">このページを<b>再読み込み</b></span></div>
+</div>
+<div class="gtest"><button class="btn btn-test" onclick="testGPS()">📡 GPSテスト</button><div class="gtest-r" id="gtr">ボタンを押して確認</div></div>
+</div>
+<div class="sbox"><h3>🌅 日没（自動計算）</h3>
+<div class="sunauto"><div class="sl" id="sdl">計算中...</div><div class="sv" id="sav">--:--</div><div class="sl" id="sll">北九州市（デフォルト）</div></div>
+<div class="srow" style="margin-top:8px"><div><div class="sl">手動変更</div></div><input type="time" id="smn" onchange="oSMC()"></div>
+</div>
+<div class="sbox"><h3>⚙️ 設定</h3>
+<div class="srow"><div><div class="sl">下山マージン</div><div class="sd">日没の何分前</div></div><select id="sMar"><option value="15">15分前</option><option value="30" selected>30分前</option><option value="45">45分前</option><option value="60">60分前</option></select></div>
+<div class="srow"><div><div class="sl">出発予定</div></div><input type="time" id="sDep" value="06:00"></div>
+<div class="srow"><div><div class="sl">体力レベル</div></div><select id="sFit"><option value="1.2">ゆっくり</option><option value="1" selected>標準</option><option value="0.8">健脚</option></select></div>
+</div>
+<button class="btn btn-go" onclick="startApp()">✅ トラッカーを開く</button>
+<button class="btn btn-skip" onclick="startApp()">スキップ</button>
 </div>
 
-<!-- ========== MAIN APP ========== -->
+<!-- MAIN -->
 <div class="app hidden" id="mainApp">
-<div class="hdr">
-  <div class="hdr-row">
-    <div><h1>⛰ 福智山系縦走トラッカー</h1><div class="sub">皿倉山駐車場→福智山→牛斬山→採銅所駅</div></div>
-    <div style="display:flex;gap:6px;align-items:center">
-      <div class="badge gps-badge"><div class="gps-dot" id="gpsDot"></div><span id="gpsTxt">GPS</span></div>
-      <div class="badge" id="dateBadge">--/--</div>
-      <div class="badge" onclick="document.getElementById('setupScreen').classList.remove('hidden');document.getElementById('mainApp').classList.add('hidden')">⚙️</div>
-    </div>
-  </div>
+<div class="hdr"><div class="hdr-row"><div><h1>⛰ 福智山系縦走</h1><div class="sub">皿倉山駐車場→福智山→牛斬山→採銅所</div></div><div style="display:flex;gap:5px;align-items:center"><div class="bdg gps-b"><div class="gd" id="gD"></div><span id="gT">GPS</span></div><div class="bdg" id="dB">--/--</div><div class="bdg" onclick="document.getElementById('setupScreen').classList.remove('hidden');document.getElementById('mainApp').classList.add('hidden')">⚙️</div></div></div></div>
+<div class="gi" id="gI"><span>GPS: <span class="gv" id="gDV">0.0km</span></span><span>標高: <span class="gv" id="gAV">---m</span></span><span>速度: <span class="gv" id="gSV">--</span></span></div>
+<div class="sunb"><div><span class="sl" id="sunL">🌅 --:--</span><span style="color:var(--dim);font-size:10px" id="tgtL"> ｜目標 --:--</span></div><div class="sv" id="sunC" style="color:var(--warn)">--:--:--</div></div>
+
+<div class="hr">
+<div class="hb"><div class="l">経過</div><div class="v" id="el">00:00:00</div></div>
+<div class="hb"><div class="l">区間ペース</div><div class="v" id="pV" style="color:var(--dim)">--:--</div><div class="u">分/km</div></div>
+<div class="hb"><div class="l">GPS速度</div><div class="v" id="gS" style="color:var(--dim);font-size:16px">--</div><div class="u">km/h</div></div>
 </div>
 
-<div class="gps-info" id="gpsInfo" style="display:none">
-  <span>GPS距離: <span class="gv" id="gpsDistVal">0.0km</span></span>
-  <span>標高: <span class="gv" id="gpsAltVal">---m</span></span>
-  <span>速度: <span class="gv" id="gpsSpdVal">--km/h</span></span>
+<div class="cmp"><h4>あなた vs 推奨ペース</h4><div class="ct"><div class="cf i" id="iB" style="width:0"></div><div class="cf y" id="yB" style="width:0"></div></div><div class="cl"><span><span class="dd i"></span>推奨<b id="iD">0.0</b>km</span><span><span class="dd y"></span>あなた<b id="yD">0.0</b>km</span></div><div class="cm" id="cM" style="color:var(--dim)">スタートしてください</div></div>
+
+<div class="pq"><div class="bl"><span>速すぎ</span><span>適正</span><span>遅い</span></div><div class="bt"><div class="bm" id="pM"></div></div><div class="ps" id="pSt" style="color:var(--dim)">到着で計測</div></div>
+
+<div class="sts">
+<div class="s"><div class="l">進行</div><div class="v" id="sD">0.0</div><div class="u">/29km</div></div>
+<div class="s"><div class="l">標準差</div><div class="v" id="sDf">--</div><div class="u" id="sDu"></div></div>
+<div class="s"><div class="l">残り</div><div class="v" id="sE">--:--</div></div>
+<div class="s"><div class="l">到着予測</div><div class="v" id="sG">--:--</div></div>
 </div>
 
-<div class="sun-bar">
-  <div><span class="lbl" id="sunLabel">🌅 日没 --:--</span><span style="color:var(--dim);font-size:10px" id="tgtLabel"> ｜下山目標 --:--</span></div>
-  <div class="val" id="sunCD" style="color:var(--warn)">--:--:--</div>
+<!-- Recommended Pace Table -->
+<div class="rpt" id="rptCard">
+<h4>📊 推奨ペース一覧</h4>
+<div class="rpt-desc">算出根拠: 登り<b style="color:var(--dng)">30分/km</b>・下り<b style="color:var(--acc2)">15分/km</b>・平坦<b style="color:var(--acc)">18分/km</b><br>（体力レベルで補正済み。YAMAP標準タイムに基づく）</div>
+<table><thead><tr><th>区間</th><th>距離</th><th>ペース</th><th>通過時刻</th></tr></thead><tbody id="rptBody"></tbody></table>
 </div>
 
-<div class="hero-row">
-  <div class="hbox"><div class="l">経過時間</div><div class="v" id="elapsed">00:00:00</div></div>
-  <div class="hbox"><div class="l">区間ペース</div><div class="v" id="paceVal" style="color:var(--dim)">--:--</div><div class="u">分/km</div></div>
-  <div class="hbox"><div class="l">GPS速度</div><div class="v" id="gpsSpeed" style="color:var(--dim);font-size:18px">--</div><div class="u">km/h</div></div>
+<!-- Route Map -->
+<div class="map-sec">
+<h3>🗺 ルートマップ</h3>
+<div class="map-wrap"><svg id="routeSvg" viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg"></svg></div>
 </div>
 
-<div class="compare">
-  <h4>あなた vs 推奨ペース</h4>
-  <div class="ctrack"><div class="cfill ideal" id="idealBar" style="width:0"></div><div class="cfill you" id="youBar" style="width:0"></div></div>
-  <div class="cleg"><span><span class="d i"></span>推奨 <b id="idealD">0.0</b>km</span><span><span class="d y"></span>あなた <b id="youD">0.0</b>km</span></div>
-  <div class="cmsg" id="cmpMsg" style="color:var(--dim)">スタートしてください</div>
+<div class="pac"><h4>⚡ ペース配分</h4>
+<div class="pb" id="pBar"></div>
+<div style="display:flex;justify-content:space-between;font-size:7px;color:var(--dim)"><span>駐車場</span><span>福智山</span><span>採銅所</span></div>
+<div class="er"><span class="el2">体力</span><div class="eb"><div class="ef" id="eF" style="width:100%;background:var(--acc)"></div></div><span class="ev" id="eV">100%</span></div>
+<div class="hc hidden" id="hC"><div class="hcb"><div style="color:var(--dim)">前半</div><div class="hv2" id="hF">--:--</div></div><div class="hcb"><div style="color:var(--dim)">後半</div><div class="hv2" id="hS">--:--</div></div></div>
+<div class="pa2" id="pA" style="color:var(--dim)">スタート後に分析</div>
 </div>
 
-<div class="pqual">
-  <div class="blbl"><span>速すぎ</span><span>適正</span><span>遅い</span></div>
-  <div class="btrack"><div class="bmark" id="pMark"></div></div>
-  <div class="pst" id="pStat" style="color:var(--dim)">チェックポイント到着で計測</div>
-</div>
+<div class="esec"><h3>標高</h3><div class="ewrap"><canvas id="eC"></canvas></div></div>
 
-<div class="stats">
-  <div class="st"><div class="l">進行</div><div class="v" id="sDist">0.0</div><div class="u">/ 29km</div></div>
-  <div class="st"><div class="l">標準差</div><div class="v" id="sDiff">--</div><div class="u" id="sDiffU"></div></div>
-  <div class="st"><div class="l">残り</div><div class="v" id="sEta">--:--</div><div class="u"></div></div>
-  <div class="st"><div class="l">到着予測</div><div class="v" id="sGoal">--:--</div><div class="u"></div></div>
-</div>
+<div class="rc"><h4>🍙 福智山 休憩可能時間</h4><div class="rv" id="rT">計測後に表示</div><div class="rd" id="rD">推奨ペースの場合: <span id="rRec" style="color:var(--acc2)">--分</span></div><div class="rw hidden" id="rW"></div></div>
 
-<div class="pacing">
-  <h4>⚡ ペース配分分析</h4>
-  <div class="pacing-bar" id="pacingBar"></div>
-  <div style="display:flex;justify-content:space-between;font-size:8px;color:var(--dim)"><span>駐車場</span><span>福智山</span><span>採銅所</span></div>
-  <div class="energy-row">
-    <span class="energy-lbl">体力残量</span>
-    <div class="energy-bar"><div class="energy-fill" id="energyFill" style="width:100%;background:var(--acc)"></div></div>
-    <span class="energy-val" id="energyVal">100%</span>
-  </div>
-  <div class="half-compare" id="halfCompare" style="display:none">
-    <div class="half-box"><div style="color:var(--dim)">前半ペース</div><div class="hv" id="halfFirst">--:--</div><div style="font-size:9px;color:var(--dim)">分/km</div></div>
-    <div class="half-box"><div style="color:var(--dim)">後半ペース</div><div class="hv" id="halfSecond">--:--</div><div style="font-size:9px;color:var(--dim)">分/km</div></div>
-  </div>
-  <div id="pacingAdvice" style="text-align:center;margin-top:6px;font-size:11px;font-weight:600;color:var(--dim)">スタート後に分析</div>
-</div>
+<div class="cps"><h3>チェックポイント</h3><div id="cpL"></div></div>
+<div class="comp hidden" id="cB"><h2>🎉 完走！</h2><div class="big" id="cT"></div><p id="cM2"></p></div>
 
-<div class="elev-sec"><h3>標高プロフィール</h3><div class="elev-wrap"><canvas id="elevC"></canvas></div></div>
+<div class="ctrls" id="c0"><button class="cb cg" onclick="doStart()">▶ スタート</button></div>
+<div class="ctrls hidden" id="c1"><button class="cb cpau" onclick="doPause()">⏸</button><button class="cb crs" onclick="doReset()">リセット</button></div>
+<div class="ctrls hidden" id="c2"><button class="cb cg" onclick="doResume()">▶ 再開</button><button class="cb crs" onclick="doReset()">リセット</button></div>
 
-<div class="rest-card">
-  <h4>🍙 福智山での休憩可能時間</h4>
-  <div class="rv" id="restTime">計測開始後に表示</div>
-  <div class="rd" id="restDet">福智山到着時の貯金から算出</div>
-  <div class="rw hidden" id="restWarn"></div>
-</div>
-
-<div class="cp-sec"><h3>チェックポイント（到着したらタップ）</h3><div id="cpList"></div></div>
-<div class="complete hidden" id="compB"><h2>🎉 縦走完了！</h2><div class="big" id="compT"></div><p id="compM"></p></div>
-
-<div class="ctrls" id="c0"><button class="cbtn cbtn-go" onclick="doStart()">▶ スタート（駐車場出発時に押す）</button></div>
-<div class="ctrls hidden" id="c1"><button class="cbtn cbtn-pause" onclick="doPause()">⏸ 一時停止</button><button class="cbtn cbtn-rst" onclick="doReset()">リセット</button></div>
-<div class="ctrls hidden" id="c2"><button class="cbtn cbtn-go" onclick="doResume()">▶ 再開</button><button class="cbtn cbtn-rst" onclick="doReset()">リセット</button></div>
-
-<div class="info"><h4>🗺️ ルート情報</h4><p>
-駐車場(180m)→皿倉山(622m)→尺岳(608m)→<span class="hl">福智山(901m)</span>→牛斬山(580m)→採銅所駅(80m)<br>
-全長: <span class="hl">約29km</span>｜累積↑約<span class="hl">2,850m</span> ↓約<span class="hl">2,950m</span>
-</p></div>
+<div class="inf"><h4>🗺️ ルート</h4><p>駐車場(180m)→皿倉山(622m)→尺岳(608m)→<span class="hl">福智山(901m)</span>→牛斬山(580m)→採銅所(80m)<br>全長<span class="hl">29km</span>｜↑約<span class="hl">2,850m</span> ↓約<span class="hl">2,950m</span></p></div>
 </div>
 
 <script>
-// ══════ SUNSET CALCULATION ══════
-// Based on NOAA Solar Calculator simplified
-function calcSunset(lat,lng,date){
-  const J=Math.floor((date.getTime()/86400000)+2440587.5);
-  const n=J-2451545.0+0.0008;
-  const Js=n-lng/360;
-  const M=(357.5291+0.98560028*Js)%360;
-  const Mr=M*Math.PI/180;
-  const C=1.9148*Math.sin(Mr)+0.0200*Math.sin(2*Mr)+0.0003*Math.sin(3*Mr);
-  const L=(M+C+180+102.9372)%360;
-  const Lr=L*Math.PI/180;
-  const dec=Math.asin(Math.sin(Lr)*Math.sin(23.4393*Math.PI/180));
-  const Jt=2451545.0+Js+0.0053*Math.sin(Mr)-0.0069*Math.sin(2*Lr);
-  const cosH=(Math.sin(-0.833*Math.PI/180)-Math.sin(lat*Math.PI/180)*Math.sin(dec))/(Math.cos(lat*Math.PI/180)*Math.cos(dec));
-  if(cosH>1||cosH<-1)return null;
-  const H=Math.acos(cosH)*180/Math.PI;
-  const Jset=Jt+H/360;
-  const setDate=new Date((Jset-2440587.5)*86400000);
-  // Adjust to local timezone
-  const offset=date.getTimezoneOffset();
-  return setDate;
-}
-function calcSunrise(lat,lng,date){
-  const J=Math.floor((date.getTime()/86400000)+2440587.5);
-  const n=J-2451545.0+0.0008;
-  const Js=n-lng/360;
-  const M=(357.5291+0.98560028*Js)%360;
-  const Mr=M*Math.PI/180;
-  const C=1.9148*Math.sin(Mr)+0.0200*Math.sin(2*Mr)+0.0003*Math.sin(3*Mr);
-  const L=(M+C+180+102.9372)%360;
-  const Lr=L*Math.PI/180;
-  const dec=Math.asin(Math.sin(Lr)*Math.sin(23.4393*Math.PI/180));
-  const Jt=2451545.0+Js+0.0053*Math.sin(Mr)-0.0069*Math.sin(2*Lr);
-  const cosH=(Math.sin(-0.833*Math.PI/180)-Math.sin(lat*Math.PI/180)*Math.sin(dec))/(Math.cos(lat*Math.PI/180)*Math.cos(dec));
-  if(cosH>1||cosH<-1)return null;
-  const H=Math.acos(cosH)*180/Math.PI;
-  const Jrise=Jt-H/360;
-  return new Date((Jrise-2440587.5)*86400000);
-}
+// Sunset calc
+function calcSS(lat,lng,dt){const J=Math.floor(dt.getTime()/864e5+2440587.5),n=J-2451545+.0008,Js=n-lng/360,M=(357.5291+.9856003*Js)%360,Mr=M*Math.PI/180,C=1.9148*Math.sin(Mr)+.02*Math.sin(2*Mr),L=(M+C+282.9372)%360,Lr=L*Math.PI/180,dec=Math.asin(Math.sin(Lr)*Math.sin(23.4393*Math.PI/180)),Jt=2451545+Js+.0053*Math.sin(Mr)-.0069*Math.sin(2*Lr),cH=(Math.sin(-.833*Math.PI/180)-Math.sin(lat*Math.PI/180)*Math.sin(dec))/(Math.cos(lat*Math.PI/180)*Math.cos(dec));if(Math.abs(cH)>1)return null;return new Date((Jt+Math.acos(cH)*180/Math.PI/360-2440587.5)*864e5)}
+let uLat=33.8834,uLng=130.8726,ssH=18,ssM=45,tgH=18,tgM=15,fitM=1;
 
-// Default: Kitakyushu
-let userLat=33.8834,userLng=130.8726;
-let sunsetH=18,sunsetM=45,targetH=18,targetM=15;
-let fitnessMultiplier=1.0;
+function updSS(){const d=new Date(),ss=calcSS(uLat,uLng,d);if(ss){ssH=ss.getHours();ssM=ss.getMinutes();document.getElementById('sav').textContent=`${ssH}:${String(ssM).padStart(2,'0')}`}document.getElementById('sdl').textContent=d.toLocaleDateString('ja-JP',{month:'long',day:'numeric',weekday:'short'})}
+function oSMC(){const v=document.getElementById('smn').value;if(v){const[h,m]=v.split(':').map(Number);ssH=h;ssM=m;document.getElementById('sav').textContent=`${h}:${String(m).padStart(2,'0')}`}}
+function stab(t,el){document.querySelectorAll('.tabb').forEach(b=>b.classList.remove('on'));document.querySelectorAll('.tabc').forEach(c=>c.classList.remove('on'));el.classList.add('on');document.getElementById('tab-'+t).classList.add('on')}
+function testGPS(){const r=document.getElementById('gtr');r.innerHTML='⏳ 取得中...';if(!navigator.geolocation){r.innerHTML='❌ GPS非対応';return}navigator.geolocation.getCurrentPosition(p=>{uLat=p.coords.latitude;uLng=p.coords.longitude;updSS();document.getElementById('sll').textContent=`GPS: ${uLat.toFixed(3)}, ${uLng.toFixed(3)}`;r.innerHTML=`✅ <span style="color:var(--acc)">成功！</span> 精度:${p.coords.accuracy?Math.round(p.coords.accuracy)+'m':'?'}${p.coords.altitude!=null?' 標高:'+Math.round(p.coords.altitude)+'m':''}`},e=>{r.innerHTML=e.code===1?'❌ 位置情報が<b>拒否</b>されています。設定で許可してください':'❌ 取得失敗(コード'+e.code+')'},{enableHighAccuracy:true,timeout:15000})}
 
-function updateSunsetCalc(){
-  const now=new Date();
-  const ss=calcSunset(userLat,userLng,now);
-  if(ss){
-    sunsetH=ss.getHours();sunsetM=ss.getMinutes();
-    document.getElementById('sunsetAutoVal').textContent=`${sunsetH}:${String(sunsetM).padStart(2,'0')}`;
-  }
-  const d=now.toLocaleDateString('ja-JP',{month:'long',day:'numeric',weekday:'short'});
-  document.getElementById('sunsetDateLabel').textContent=d;
-}
-
-function onSunsetManualChange(){
-  const v=document.getElementById('sunsetManual').value;
-  if(v){const[h,m]=v.split(':').map(Number);sunsetH=h;sunsetM=m;document.getElementById('sunsetAutoVal').textContent=`${h}:${String(m).padStart(2,'0')}`}
-}
-
-// ══════ SETUP ══════
-function showTab(t){
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
-  event.target.classList.add('active');
-  document.getElementById('tab-'+t).classList.add('active');
-}
-
-function testGPS(){
-  const r=document.getElementById('gpsTestResult');
-  r.innerHTML='<div class="gps-status-icon">⏳</div>取得中...（最大15秒）';
-  if(!navigator.geolocation){r.innerHTML='<div class="gps-status-icon">❌</div>このブラウザはGPSに対応していません。<br>ChromeまたはSafariで開いてください。';return}
-  navigator.geolocation.getCurrentPosition(
-    p=>{
-      const{latitude:lat,longitude:lng,altitude:alt,accuracy:acc}=p.coords;
-      userLat=lat;userLng=lng;
-      updateSunsetCalc();
-      document.getElementById('sunsetLocLabel').textContent=`位置: ${lat.toFixed(4)}, ${lng.toFixed(4)}（GPS取得）`;
-      r.innerHTML=`<div class="gps-status-icon">✅</div><span style="color:var(--acc);font-weight:600">GPS取得成功！</span><br>緯度: ${lat.toFixed(4)} / 経度: ${lng.toFixed(4)}<br>精度: ${acc?acc.toFixed(0)+'m':'不明'}${alt!=null?' / 標高: '+Math.round(alt)+'m':''}`;
-    },
-    err=>{
-      let msg='';
-      if(err.code===1)msg='位置情報が<b>拒否</b>されています。<br>上の手順で許可設定を行い、ページを<b>再読み込み</b>してください。';
-      else if(err.code===2)msg='位置情報を取得できませんでした。<br>屋外で再試行するか、設定を確認してください。';
-      else msg='タイムアウト。電波状況が悪い可能性があります。<br>屋外で再試行してください。';
-      r.innerHTML=`<div class="gps-status-icon">❌</div>${msg}<br><br><span style="font-size:10px;color:var(--dim)">エラーコード: ${err.code} / ${err.message}</span>`;
-    },
-    {enableHighAccuracy:true,timeout:15000,maximumAge:0}
-  );
-}
-
-function startApp(){
-  // Read settings
-  const margin=parseInt(document.getElementById('setMargin').value);
-  targetH=sunsetH;targetM=sunsetM-margin;
-  if(targetM<0){targetH--;targetM+=60}
-  const fitness=document.getElementById('setFitness').value;
-  fitnessMultiplier=fitness==='slow'?1.2:fitness==='fast'?0.8:1.0;
-  // Apply fitness to CP std times
-  CP.forEach(cp=>cp.adjStd=Math.round(cp.std*fitnessMultiplier));
-
-  // Update UI
-  document.getElementById('sunLabel').textContent=`🌅 日没 ${sunsetH}:${String(sunsetM).padStart(2,'0')}`;
-  document.getElementById('tgtLabel').textContent=` ｜下山目標 ${targetH}:${String(targetM).padStart(2,'0')}`;
-  const now=new Date();
-  document.getElementById('dateBadge').textContent=`${now.getMonth()+1}/${now.getDate()}`;
-
-  document.getElementById('setupScreen').classList.add('hidden');
-  document.getElementById('mainApp').classList.remove('hidden');
-  render();setTimeout(drawElev,100);
-  initGPS();
-}
-
-// ══════ ROUTE DATA ══════
+// Route
 const CP=[
-{name:'皿倉山ケーブル駐車場',dist:0,elev:180,std:0,terrain:'start',note:'出発！',adjStd:0},
-{name:'皿倉山 山頂(622m)',dist:2.0,elev:622,std:65,terrain:'up',note:'急登440m',adjStd:65},
-{name:'市の瀬峠',dist:5.2,elev:390,std:115,terrain:'down',note:'下り基調',adjStd:115},
-{name:'建郷山',dist:6.0,elev:443,std:129,terrain:'up',note:'小ピーク',adjStd:129},
-{name:'田床峠',dist:9.0,elev:410,std:195,terrain:'flat',note:'平坦',adjStd:195},
-{name:'観音越',dist:11.5,elev:520,std:265,terrain:'up',note:'登り返し',adjStd:265},
-{name:'尺岳(608m)',dist:14.0,elev:608,std:365,terrain:'up',note:'展望あり',adjStd:365},
-{name:'豊前越',dist:16.5,elev:490,std:410,terrain:'down',note:'下り',adjStd:410},
-{name:'福智山(901m) 🍙',dist:18.5,elev:901,std:460,terrain:'up',note:'最高峰！休憩',isFukuchi:true,adjStd:460},
-{name:'赤牟田の辻',dist:21.0,elev:740,std:520,terrain:'down',note:'下り基調',adjStd:520},
-{name:'焼立山',dist:21.8,elev:759,std:530,terrain:'up',note:'小ピーク',adjStd:530},
-{name:'牛斬山(580m)',dist:24.0,elev:580,std:590,terrain:'down',note:'最後のピーク',adjStd:590},
-{name:'採銅所登山口',dist:27.0,elev:120,std:640,terrain:'down',note:'急坂下り',adjStd:640},
-{name:'JR採銅所駅 🏁',dist:29.0,elev:80,std:665,terrain:'flat',note:'ゴール！',adjStd:665}
+{name:'駐車場',dist:0,elev:180,std:0,tr:'start',note:'出発',lat:33.8569,lng:130.7951,adjStd:0,recPace:0},
+{name:'皿倉山(622m)',dist:2,elev:622,std:65,tr:'up',note:'急登',lat:33.8498,lng:130.7878,adjStd:65,recPace:30},
+{name:'市の瀬峠',dist:5.2,elev:390,std:115,tr:'down',note:'下り',lat:33.8328,lng:130.7785,adjStd:115,recPace:15},
+{name:'建郷山',dist:6,elev:443,std:129,tr:'up',note:'小ピーク',lat:33.8268,lng:130.7745,adjStd:129,recPace:30},
+{name:'田床峠',dist:9,elev:410,std:195,tr:'flat',note:'平坦',lat:33.8098,lng:130.7612,adjStd:195,recPace:18},
+{name:'観音越',dist:11.5,elev:520,std:265,tr:'up',note:'登り',lat:33.7958,lng:130.7498,adjStd:265,recPace:30},
+{name:'尺岳(608m)',dist:14,elev:608,std:365,tr:'up',note:'展望',lat:33.7828,lng:130.7388,adjStd:365,recPace:30},
+{name:'豊前越',dist:16.5,elev:490,std:410,tr:'down',note:'下り',lat:33.7688,lng:130.7278,adjStd:410,recPace:15},
+{name:'福智山(901m)🍙',dist:18.5,elev:901,std:460,tr:'up',note:'最高峰',lat:33.7548,lng:130.7168,adjStd:460,isFk:true,recPace:30},
+{name:'赤牟田の辻',dist:21,elev:740,std:520,tr:'down',note:'下り',lat:33.7368,lng:130.7088,adjStd:520,recPace:15},
+{name:'焼立山',dist:21.8,elev:759,std:530,tr:'up',note:'小ピーク',lat:33.7318,lng:130.7058,adjStd:530,recPace:30},
+{name:'牛斬山(580m)',dist:24,elev:580,std:590,tr:'down',note:'最後',lat:33.7178,lng:130.6958,adjStd:590,recPace:15},
+{name:'採銅所登山口',dist:27,elev:120,std:640,tr:'down',note:'急坂下り',lat:33.7018,lng:130.6878,adjStd:640,recPace:15},
+{name:'採銅所駅🏁',dist:29,elev:80,std:665,tr:'flat',note:'ゴール',lat:33.6938,lng:130.6828,adjStd:665,recPace:18}
 ];
 const TOT=29,MID=14.5;
-const ELEV=[{d:0,e:180},{d:.5,e:250},{d:1,e:380},{d:1.5,e:500},{d:2,e:622},{d:3,e:530},{d:4,e:450},{d:5.2,e:390},{d:6,e:443},{d:7,e:400},{d:8,e:390},{d:9,e:410},{d:10,e:460},{d:11.5,e:520},{d:12.5,e:560},{d:14,e:608},{d:15,e:530},{d:16.5,e:490},{d:17,e:600},{d:17.5,e:750},{d:18,e:850},{d:18.5,e:901},{d:19.5,e:800},{d:20.5,e:750},{d:21,e:740},{d:21.8,e:759},{d:22.5,e:700},{d:24,e:580},{d:25,e:400},{d:26,e:250},{d:27,e:120},{d:28,e:95},{d:29,e:80}];
+const EL=[{d:0,e:180},{d:.5,e:250},{d:1,e:380},{d:1.5,e:500},{d:2,e:622},{d:3,e:530},{d:4,e:450},{d:5.2,e:390},{d:6,e:443},{d:7,e:400},{d:8,e:390},{d:9,e:410},{d:10,e:460},{d:11.5,e:520},{d:12.5,e:560},{d:14,e:608},{d:15,e:530},{d:16.5,e:490},{d:17,e:600},{d:17.5,e:750},{d:18,e:850},{d:18.5,e:901},{d:19.5,e:800},{d:20.5,e:750},{d:21,e:740},{d:21.8,e:759},{d:22.5,e:700},{d:24,e:580},{d:25,e:400},{d:26,e:250},{d:27,e:120},{d:28,e:95},{d:29,e:80}];
 
-let running=false,paused=false,startTs=null,pauseTotal=0,pauseTs=null,timerIv=null;
-let arrivals=[],arrTimes={},startWall=null;
-let gpsOn=false,watchId=null,gpsTotalDist=0,lastGpsPos=null;
+let running=false,paused=false,startTs=null,pTotal=0,pTs=null,timerIv,arrivals=[],arrT={},sWall=null;
+let gOn=false,wId=null,gDist=0,lGps=null;
 
-function fmt(ms){const s=Math.floor(ms/1000),h=Math.floor(s/3600),m=Math.floor(s%3600/60),sc=s%60;return`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(sc).padStart(2,'0')}`}
-function elMs(){if(!startTs)return 0;return(paused?pauseTs:Date.now())-startTs-pauseTotal}
-function showC(id){['c0','c1','c2'].forEach(c=>document.getElementById(c).classList.toggle('hidden',c!==id))}
-function idealDist(min){for(let i=1;i<CP.length;i++){const s=CP[i].adjStd||CP[i].std;const ps=CP[i-1].adjStd||CP[i-1].std;if(s>=min){const t=(min-ps)/(s-ps);return CP[i-1].dist+t*(CP[i].dist-CP[i-1].dist)}}return TOT}
-function haversine(a,b,c,d){const R=6371000,r=x=>x*Math.PI/180,dl=r(c-a),dn=r(d-b),x=Math.sin(dl/2)**2+Math.cos(r(a))*Math.cos(r(c))*Math.sin(dn/2)**2;return R*2*Math.atan2(Math.sqrt(x),Math.sqrt(1-x))}
+function fmt(ms){const s=Math.floor(ms/1e3),h=Math.floor(s/3600),m=Math.floor(s%3600/60),sc=s%60;return`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(sc).padStart(2,'0')}`}
+function eMs(){if(!startTs)return 0;return(paused?pTs:Date.now())-startTs-pTotal}
+function shC(id){['c0','c1','c2'].forEach(c=>document.getElementById(c).classList.toggle('hidden',c!==id))}
+function iDist(min){for(let i=1;i<CP.length;i++){const s=CP[i].adjStd,p=CP[i-1].adjStd;if(s>=min){const t=(min-p)/(s-p);return CP[i-1].dist+t*(CP[i].dist-CP[i-1].dist)}}return TOT}
+function hav(a,b,c,d){const R=6371e3,r=x=>x*Math.PI/180,dl=r(c-a),dn=r(d-b),x=Math.sin(dl/2)**2+Math.cos(r(a))*Math.cos(r(c))*Math.sin(dn/2)**2;return R*2*Math.atan2(Math.sqrt(x),Math.sqrt(1-x))}
 
-function initGPS(){
-  if(!navigator.geolocation)return;
-  navigator.geolocation.getCurrentPosition(p=>{
-    gpsOn=true;document.getElementById('gpsDot').classList.add('on');document.getElementById('gpsTxt').textContent='ON';document.getElementById('gpsInfo').style.display='flex';
-    if(p.coords.altitude!=null)document.getElementById('gpsAltVal').textContent=Math.round(p.coords.altitude)+'m';
-  },()=>{document.getElementById('gpsTxt').textContent='OFF'},{enableHighAccuracy:true,timeout:10000})
+function initG(){if(!navigator.geolocation)return;navigator.geolocation.getCurrentPosition(p=>{gOn=true;document.getElementById('gD').classList.add('on');document.getElementById('gT').textContent='ON';document.getElementById('gI').style.display='flex';if(p.coords.altitude!=null)document.getElementById('gAV').textContent=Math.round(p.coords.altitude)+'m'},()=>{document.getElementById('gT').textContent='OFF'},{enableHighAccuracy:true,timeout:10000})}
+function startG(){if(!navigator.geolocation)return;wId=navigator.geolocation.watchPosition(p=>{if(!gOn){gOn=true;document.getElementById('gD').classList.add('on');document.getElementById('gT').textContent='ON';document.getElementById('gI').style.display='flex'}const{latitude:la,longitude:ln,altitude:al,speed:sp,accuracy:ac}=p.coords;if(ac>60)return;if(al!=null)document.getElementById('gAV').textContent=Math.round(al)+'m';if(sp!=null&&sp>=0){const k=sp*3.6;document.getElementById('gSV').textContent=k.toFixed(1)+'km/h';document.getElementById('gS').textContent=k.toFixed(1);document.getElementById('gS').style.color=k>.5?'var(--acc)':'var(--dim)'}if(lGps){const d=hav(lGps.la,lGps.ln,la,ln);if(d>3){gDist+=d;document.getElementById('gDV').textContent=(gDist/1e3).toFixed(1)+'km'}}lGps={la,ln}},()=>{},{enableHighAccuracy:true,maximumAge:5000,timeout:15000})}
+function stopG(){if(wId!=null){navigator.geolocation.clearWatch(wId);wId=null}}
+
+function startApp(){
+  const mar=parseInt(document.getElementById('sMar').value);tgH=ssH;tgM=ssM-mar;if(tgM<0){tgH--;tgM+=60}
+  fitM=parseFloat(document.getElementById('sFit').value);
+  CP.forEach(cp=>cp.adjStd=Math.round(cp.std*fitM));
+  document.getElementById('sunL').textContent=`🌅 ${ssH}:${String(ssM).padStart(2,'0')}`;
+  document.getElementById('tgtL').textContent=` ｜目標 ${tgH}:${String(tgM).padStart(2,'0')}`;
+  const n=new Date();document.getElementById('dB').textContent=`${n.getMonth()+1}/${n.getDate()}`;
+  document.getElementById('setupScreen').classList.add('hidden');document.getElementById('mainApp').classList.remove('hidden');
+  buildRPT();buildMap();calcRecRest();
+  render();setTimeout(drawE,100);initG()
 }
-function startGPS(){
-  if(!navigator.geolocation)return;
-  watchId=navigator.geolocation.watchPosition(p=>{
-    if(!gpsOn){gpsOn=true;document.getElementById('gpsDot').classList.add('on');document.getElementById('gpsTxt').textContent='ON';document.getElementById('gpsInfo').style.display='flex'}
-    const{latitude:lat,longitude:lng,altitude:alt,speed:spd,accuracy:acc}=p.coords;
-    if(acc>60)return;
-    if(alt!=null)document.getElementById('gpsAltVal').textContent=Math.round(alt)+'m';
-    if(spd!=null&&spd>=0){const k=spd*3.6;document.getElementById('gpsSpdVal').textContent=k.toFixed(1)+'km/h';document.getElementById('gpsSpeed').textContent=k.toFixed(1);document.getElementById('gpsSpeed').style.color=k>0.5?'var(--acc)':'var(--dim)'}
-    if(lastGpsPos){const d=haversine(lastGpsPos.lat,lastGpsPos.lng,lat,lng);if(d>3){gpsTotalDist+=d;document.getElementById('gpsDistVal').textContent=(gpsTotalDist/1000).toFixed(1)+'km'}}
-    lastGpsPos={lat,lng}
-  },()=>{},{enableHighAccuracy:true,maximumAge:5000,timeout:15000})
+
+// Recommended Pace Table
+function buildRPT(){
+  const dep=document.getElementById('sDep').value||'06:00';const[dh,dm]=dep.split(':').map(Number);
+  const tb=document.getElementById('rptBody');tb.innerHTML='';
+  let cumMin=0;const fkI=CP.findIndex(c=>c.isFk);
+  for(let i=0;i<CP.length;i++){
+    const cp=CP[i];const adjS=cp.adjStd;
+    const arrH=dh+Math.floor(adjS/60),arrM=dm+adjS%60;
+    const ah=arrH+Math.floor(arrM/60),am=arrM%60;
+    const tStr=`${ah%24}:${String(am).padStart(2,'0')}`;
+    let dist='',pace='',tcl='';
+    if(i>0){
+      const dd=(cp.dist-CP[i-1].dist).toFixed(1);
+      const rp=Math.round(cp.recPace*fitM);
+      dist=dd+'km';pace=rp+'分/km';
+      tcl=cp.tr==='up'?'terrain-up':cp.tr==='down'?'terrain-down':'terrain-flat';
+    }
+    const isRest=i===fkI;
+    tb.innerHTML+=`<tr class="${isRest?'rest-row':''}"><td>${cp.name}</td><td>${dist}</td><td class="${tcl}">${pace}</td><td>${i===0?'出発 '+tStr:tStr}</td></tr>`;
+    if(isRest)tb.innerHTML+=`<tr class="rest-row"><td colspan="4" style="text-align:center">🍙 休憩</td></tr>`;
+  }
 }
-function stopGPS(){if(watchId!=null){navigator.geolocation.clearWatch(watchId);watchId=null}}
-
-function doStart(){running=true;paused=false;startTs=Date.now();pauseTotal=0;startWall=new Date();arrivals=[0];arrTimes={0:0};gpsTotalDist=0;lastGpsPos=null;showC('c1');timerIv=setInterval(tick,1000);startGPS();render()}
-function doPause(){paused=true;pauseTs=Date.now();showC('c2');stopGPS()}
-function doResume(){paused=false;if(pauseTs){pauseTotal+=Date.now()-pauseTs;pauseTs=null}showC('c1');startGPS()}
-function doReset(){if(!confirm('リセット？'))return;running=false;paused=false;clearInterval(timerIv);startTs=null;pauseTotal=0;startWall=null;arrivals=[];arrTimes={};stopGPS();gpsTotalDist=0;lastGpsPos=null;showC('c0');document.getElementById('elapsed').textContent='00:00:00';document.getElementById('paceVal').textContent='--:--';document.getElementById('paceVal').style.color='var(--dim)';document.getElementById('pStat').textContent='チェックポイント到着で計測';document.getElementById('pStat').style.color='var(--dim)';document.getElementById('pMark').style.display='none';document.getElementById('sDist').textContent='0.0';document.getElementById('sDiff').textContent='--';document.getElementById('sEta').textContent='--:--';document.getElementById('sGoal').textContent='--:--';document.getElementById('idealBar').style.width='0';document.getElementById('youBar').style.width='0';document.getElementById('idealD').textContent='0.0';document.getElementById('youD').textContent='0.0';document.getElementById('cmpMsg').textContent='スタートしてください';document.getElementById('cmpMsg').style.color='var(--dim)';document.getElementById('restTime').textContent='計測開始後に表示';document.getElementById('compB').classList.add('hidden');document.getElementById('energyFill').style.width='100%';document.getElementById('energyVal').textContent='100%';document.getElementById('halfCompare').style.display='none';document.getElementById('pacingAdvice').textContent='スタート後に分析';render()}
-
-function tick(){if(!running||paused)return;const ms=elMs();document.getElementById('elapsed').textContent=fmt(ms);updateCompare(ms);updateSunset();updateRest(ms);updatePacing(ms)}
-function updateSunset(){const now=new Date(),tgt=new Date(now);tgt.setHours(targetH,targetM,0,0);const d=tgt-now;const el=document.getElementById('sunCD');if(d<=0){el.textContent='目標超過!';el.style.color='var(--dng)'}else{el.textContent='残 '+fmt(d);el.style.color=d<3600000?'var(--dng)':d<7200000?'var(--warn)':'var(--acc)'}}
-function updateCompare(ms){const min=ms/60000,id=idealDist(min),last=arrivals.length?arrivals[arrivals.length-1]:-1,you=last>=0?CP[last].dist:0;document.getElementById('idealBar').style.width=(id/TOT*100)+'%';document.getElementById('youBar').style.width=(you/TOT*100)+'%';document.getElementById('idealD').textContent=id.toFixed(1);document.getElementById('youD').textContent=you.toFixed(1);const df=you-id,m=document.getElementById('cmpMsg');if(Math.abs(df)<.5){m.textContent='✅ ほぼ推奨通り';m.style.color='var(--good)'}else if(df>0){m.textContent=`✨ ${df.toFixed(1)}km先行`;m.style.color='var(--acc)'}else{m.textContent=`⚠️ ${Math.abs(df).toFixed(1)}km遅れ`;m.style.color=df<-3?'var(--dng)':'var(--warn)'}}
-function updatePacing(ms){const min=ms/60000,last=arrivals.length?arrivals[arrivals.length-1]:-1;if(last<0)return;const dist=CP[last].dist;const pct=Math.max(0,Math.round(100-dist/TOT*85-(dist>18?15:0)));const ef=document.getElementById('energyFill'),ev=document.getElementById('energyVal');ef.style.width=pct+'%';ev.textContent=pct+'%';ef.style.background=pct>50?'var(--acc)':pct>25?'var(--warn)':'var(--dng)';ev.style.color=pct>50?'var(--acc)':pct>25?'var(--warn)':'var(--dng)';if(dist>=MID){document.getElementById('halfCompare').style.display='flex';let ft=0,fd=0;for(let i=1;i<arrivals.length;i++){if(CP[arrivals[i]].dist<=MID){ft=arrTimes[arrivals[i]]/60000;fd=CP[arrivals[i]].dist}else break}const st=min-ft,sd=dist-fd;if(fd>0){const p1=ft/fd,p2=sd>0?st/sd:0;document.getElementById('halfFirst').textContent=`${Math.floor(p1)}:${String(Math.round((p1%1)*60)).padStart(2,'0')}`;if(p2>0){document.getElementById('halfSecond').textContent=`${Math.floor(p2)}:${String(Math.round((p2%1)*60)).padStart(2,'0')}`;const adv=document.getElementById('pacingAdvice');if(p2>p1*1.2){adv.textContent='⚠️ 後半ペース低下中。補給を';adv.style.color='var(--warn)'}else if(p2<p1*.9){adv.textContent='✨ 後半の方が速い！';adv.style.color='var(--acc)'}else{adv.textContent='✅ 安定ペース';adv.style.color='var(--good)'}}}}
-  const bar=document.getElementById('pacingBar');bar.innerHTML='';for(let i=1;i<CP.length;i++){const w=(CP[i].dist-CP[i-1].dist)/TOT*100;const passed=arrivals.includes(i);let col='var(--card2)';if(passed){const prev=arrivals.filter(a=>a<i).pop();if(prev!=null){const dd=CP[i].dist-CP[prev].dist,dt=(arrTimes[i]-arrTimes[prev])/60000;if(dd>0){const pace=dt/dd,t=CP[i].terrain;let tMin=15,tMax=20;if(t==='up'){tMin=25;tMax=35}else if(t==='down'){tMin=12;tMax=18}if(pace<tMin)col='var(--acc)';else if(pace<=tMax)col='var(--good)';else if(pace<=tMax*1.3)col='var(--warn)';else col='var(--dng)'}}}bar.innerHTML+=`<div class="pacing-seg" style="flex:${w};background:${col}"></div>`}
+function calcRecRest(){
+  const dep=document.getElementById('sDep').value||'06:00';const[dh,dm]=dep.split(':').map(Number);
+  const fkI=CP.findIndex(c=>c.isFk);const fkS=CP[fkI].adjStd;const gS=CP[CP.length-1].adjStd;
+  const postMin=gS-fkS;const totalAvail=(tgH*60+tgM)-(dh*60+dm);
+  const rest=totalAvail-gS;
+  document.getElementById('rRec').textContent=rest>0?`約${rest}分`:'余裕なし';
 }
-function updateRest(ms){const min=ms/60000,last=arrivals.length?arrivals[arrivals.length-1]:-1;const fi=CP.findIndex(c=>c.isFukuchi);if(last>=fi&&arrTimes[fi]!=null)return;if(last<0)return;const cS=CP[last].adjStd||CP[last].std,fS=CP[fi].adjStd||CP[fi].std,gS=CP[CP.length-1].adjStd||CP[CP.length-1].std;const ratio=cS>0?min/cS:1;const estFA=min+(fS-cS)*ratio,estP=(gS-fS)*ratio;const sH=startWall.getHours(),sM=startWall.getMinutes();const avail=(targetH*60+targetM)-(sH*60+sM)-estFA-estP;const el=document.getElementById('restTime'),det=document.getElementById('restDet'),w=document.getElementById('restWarn');if(avail>=60){el.textContent=`約${Math.floor(avail)}分`;el.style.color='var(--acc2)';det.textContent='ゆっくり食事OK';w.classList.add('hidden')}else if(avail>=20){el.textContent=`約${Math.floor(avail)}分`;el.style.color='var(--warn)';det.textContent='手早く休憩を';w.classList.add('hidden')}else if(avail>0){el.textContent=`約${Math.floor(avail)}分`;el.style.color='var(--dng)';det.textContent='';w.classList.remove('hidden');w.textContent='⚠️ 休憩最小限に'}else{el.textContent='休憩不可';el.style.color='var(--dng)';det.textContent='';w.classList.remove('hidden');w.textContent='⚠️ エスケープ検討を'}}
 
-function arrive(idx){if(arrivals.includes(idx))return;const ms=elMs(),min=ms/60000;arrivals.push(idx);arrTimes[idx]=ms;if(arrivals.length>=2){const prev=arrivals.filter(a=>a<idx).pop();if(prev!=null){const dd=CP[idx].dist-CP[prev].dist,dt=(arrTimes[idx]-arrTimes[prev])/60000;if(dd>0)showPace(dt/dd,CP[idx].terrain)}}document.getElementById('sDist').textContent=CP[idx].dist.toFixed(1);const adjS=CP[idx].adjStd||CP[idx].std;const sd=min-adjS,de=document.getElementById('sDiff'),du=document.getElementById('sDiffU');if(Math.abs(sd)<5){de.textContent='±0';de.style.color='var(--good)';du.textContent='標準'}else if(sd<0){de.textContent=Math.round(Math.abs(sd))+'分';de.style.color='var(--good)';du.textContent='先行✨'}else{de.textContent='+'+Math.round(sd)+'分';de.style.color=sd>60?'var(--dng)':'var(--warn)';du.textContent='遅れ'}
-if(CP[idx].dist>0&&CP[idx].dist<TOT){const ap=min/CP[idx].dist,rem=TOT-CP[idx].dist,etaM=Math.round(rem*ap),h=Math.floor(etaM/60),m=etaM%60;document.getElementById('sEta').textContent=h+':'+String(m).padStart(2,'0');if(startWall){const gd=new Date(startWall.getTime()+ms+etaM*60000);document.getElementById('sGoal').textContent=gd.getHours()+':'+String(gd.getMinutes()).padStart(2,'0');document.getElementById('sGoal').style.color=(gd.getHours()>targetH||(gd.getHours()===targetH&&gd.getMinutes()>targetM))?'var(--dng)':'var(--good)'}}
-if(CP[idx].isFukuchi){const fi=idx,gS=CP[CP.length-1].adjStd||CP[CP.length-1].std,fS=CP[fi].adjStd||CP[fi].std;const ratio=min/fS,estP=(gS-fS)*ratio;const sH=startWall.getHours(),sM=startWall.getMinutes();const rest=(targetH*60+targetM)-(sH*60+sM)-min-estP;const el=document.getElementById('restTime'),det=document.getElementById('restDet');if(rest>=40){el.textContent=`🍙 ${Math.floor(rest)}分OK！`;el.style.color='var(--acc2)';det.textContent=`${Math.floor(rest)}分休んでも間に合います`}else if(rest>=15){el.textContent=Math.floor(rest)+'分';el.style.color='var(--warn)';det.textContent=Math.floor(rest)+'分以内で'}else{el.textContent=Math.max(0,Math.floor(rest))+'分';el.style.color='var(--dng)';det.textContent='すぐ出発推奨'}}
-if(idx===CP.length-1){running=false;clearInterval(timerIv);stopGPS();showC('c0');document.getElementById('compB').classList.remove('hidden');document.getElementById('compT').textContent=fmt(ms);document.getElementById('compM').textContent='全行程29km完走おめでとうございます！';document.getElementById('sEta').textContent='完了'}
+// SVG Route Map
+function buildMap(){
+  const svg=document.getElementById('routeSvg');
+  const W=400,H=320,pad=30;
+  // Normalize lat/lng to SVG coords
+  const lats=CP.map(c=>c.lat),lngs=CP.map(c=>c.lng);
+  const minLat=Math.min(...lats),maxLat=Math.max(...lats),minLng=Math.min(...lngs),maxLng=Math.max(...lngs);
+  const rLat=maxLat-minLat||.001,rLng=maxLng-minLng||.001;
+  const tx=v=>(v-minLng)/rLng*(W-2*pad)+pad;
+  const ty=v=>H-pad-(v-minLat)/rLat*(H-2*pad);
+
+  let html=`<rect width="${W}" height="${H}" fill="#0a1a0f" rx="6"/>`;
+  // Grid
+  for(let i=0;i<5;i++){const y=pad+i*(H-2*pad)/4;html+=`<line x1="${pad}" y1="${y}" x2="${W-pad}" y2="${y}" stroke="#1e3a28" stroke-width=".5" stroke-dasharray="4,4"/>`}
+  // Trail
+  html+=`<polyline points="${CP.map(c=>`${tx(c.lng)},${ty(c.lat)}`).join(' ')}" fill="none" stroke="#1e3a28" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" id="trailBg"/>`;
+  html+=`<polyline points="${CP.map(c=>`${tx(c.lng)},${ty(c.lat)}`).join(' ')}" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1000" stroke-dashoffset="1000" id="trailProgress"/>`;
+  // Points
+  CP.forEach((c,i)=>{
+    const x=tx(c.lng),y=ty(c.lat);
+    const col=c.isFk?'#fbbf24':i===0?'#4ade80':i===CP.length-1?'#ef4444':'#6b9478';
+    const r=c.isFk||i===0||i===CP.length-1?6:4;
+    html+=`<circle cx="${x}" cy="${y}" r="${r}" fill="${col}" stroke="#080f0b" stroke-width="2" id="mp${i}"/>`;
+    // Label
+    const short=c.name.replace(/\(.*\)/,'').replace('🍙','').replace('🏁','');
+    if(i===0||c.isFk||i===CP.length-1||i===6||i===11){
+      const anchor=i===0?'start':i===CP.length-1?'end':'middle';
+      const dy=i===0||i===CP.length-1?-10:12;
+      html+=`<text x="${x}" y="${y+dy}" text-anchor="${anchor}" fill="#6b9478" font-size="9" font-family="Noto Sans JP">${short}</text>`
+    }
+  });
+  // North arrow
+  html+=`<text x="${W-pad}" y="${pad-5}" text-anchor="end" fill="#6b9478" font-size="9">N↑</text>`;
+  // Scale
+  html+=`<line x1="${pad}" y1="${H-10}" x2="${pad+40}" y2="${H-10}" stroke="#6b9478" stroke-width="1"/><text x="${pad+20}" y="${H-3}" text-anchor="middle" fill="#6b9478" font-size="7">≈3km</text>`;
+  svg.innerHTML=html
+}
+function updateMap(){
+  const last=arrivals.length?arrivals[arrivals.length-1]:-1;
+  CP.forEach((c,i)=>{
+    const el=document.getElementById('mp'+i);if(!el)return;
+    if(arrivals.includes(i))el.setAttribute('fill','#4ade80');
+  });
+  // Animate trail
+  const prog=document.getElementById('trailProgress');if(!prog)return;
+  const total=prog.getTotalLength?prog.getTotalLength():1000;
+  const pct=last>=0?CP[last].dist/TOT:0;
+  prog.style.strokeDashoffset=total*(1-pct)
+}
+
+function doStart(){running=true;paused=false;startTs=Date.now();pTotal=0;sWall=new Date();arrivals=[0];arrT={0:0};gDist=0;lGps=null;shC('c1');timerIv=setInterval(tick,1e3);startG();render()}
+function doPause(){paused=true;pTs=Date.now();shC('c2');stopG()}
+function doResume(){paused=false;if(pTs){pTotal+=Date.now()-pTs;pTs=null}shC('c1');startG()}
+function doReset(){if(!confirm('リセット？'))return;running=false;paused=false;clearInterval(timerIv);startTs=null;pTotal=0;sWall=null;arrivals=[];arrT={};stopG();gDist=0;lGps=null;shC('c0');document.getElementById('el').textContent='00:00:00';document.getElementById('pV').textContent='--:--';document.getElementById('pV').style.color='var(--dim)';document.getElementById('pSt').textContent='到着で計測';document.getElementById('pSt').style.color='var(--dim)';document.getElementById('pM').style.display='none';document.getElementById('sD').textContent='0.0';document.getElementById('sDf').textContent='--';document.getElementById('sE').textContent='--:--';document.getElementById('sG').textContent='--:--';document.getElementById('iB').style.width='0';document.getElementById('yB').style.width='0';document.getElementById('iD').textContent='0.0';document.getElementById('yD').textContent='0.0';document.getElementById('cM').textContent='スタートしてください';document.getElementById('cM').style.color='var(--dim)';document.getElementById('rT').textContent='計測後に表示';document.getElementById('cB').classList.add('hidden');document.getElementById('eF').style.width='100%';document.getElementById('eV').textContent='100%';document.getElementById('hC').style.display='none';document.getElementById('pA').textContent='スタート後に分析';buildMap();render()}
+
+function tick(){if(!running||paused)return;const ms=eMs();document.getElementById('el').textContent=fmt(ms);upCmp(ms);upSun();upRest(ms);upPac(ms)}
+function upSun(){const n=new Date(),t=new Date(n);t.setHours(tgH,tgM,0,0);const d=t-n;const e=document.getElementById('sunC');if(d<=0){e.textContent='超過!';e.style.color='var(--dng)'}else{e.textContent='残'+fmt(d);e.style.color=d<36e5?'var(--dng)':d<72e5?'var(--warn)':'var(--acc)'}}
+function upCmp(ms){const min=ms/6e4,id=iDist(min),last=arrivals.length?arrivals[arrivals.length-1]:-1,you=last>=0?CP[last].dist:0;document.getElementById('iB').style.width=id/TOT*100+'%';document.getElementById('yB').style.width=you/TOT*100+'%';document.getElementById('iD').textContent=id.toFixed(1);document.getElementById('yD').textContent=you.toFixed(1);const df=you-id,m=document.getElementById('cM');if(Math.abs(df)<.5){m.textContent='✅ 推奨通り';m.style.color='var(--good)'}else if(df>0){m.textContent=`✨ ${df.toFixed(1)}km先行`;m.style.color='var(--acc)'}else{m.textContent=`⚠️ ${Math.abs(df).toFixed(1)}km遅れ`;m.style.color=df<-3?'var(--dng)':'var(--warn)'}}
+function upPac(ms){const min=ms/6e4,last=arrivals.length?arrivals[arrivals.length-1]:-1;if(last<0)return;const dist=CP[last].dist;const pct=Math.max(0,Math.round(100-dist/TOT*85-(dist>18?15:0)));const ef=document.getElementById('eF'),ev=document.getElementById('eV');ef.style.width=pct+'%';ev.textContent=pct+'%';ef.style.background=pct>50?'var(--acc)':pct>25?'var(--warn)':'var(--dng)';ev.style.color=ef.style.background;
+if(dist>=MID){document.getElementById('hC').style.display='flex';let ft=0,fd=0;for(let i=1;i<arrivals.length;i++){if(CP[arrivals[i]].dist<=MID){ft=arrT[arrivals[i]]/6e4;fd=CP[arrivals[i]].dist}else break}const st=min-ft,sd=dist-fd;if(fd>0){const p1=ft/fd,p2=sd>0?st/sd:0;document.getElementById('hF').textContent=`${Math.floor(p1)}:${String(Math.round((p1%1)*60)).padStart(2,'0')}`;if(p2>0){document.getElementById('hS').textContent=`${Math.floor(p2)}:${String(Math.round((p2%1)*60)).padStart(2,'0')}`;const a=document.getElementById('pA');if(p2>p1*1.2){a.textContent='⚠️ 後半ペース低下';a.style.color='var(--warn)'}else if(p2<p1*.9){a.textContent='✨ 後半好調';a.style.color='var(--acc)'}else{a.textContent='✅ 安定';a.style.color='var(--good)'}}}}
+const bar=document.getElementById('pBar');bar.innerHTML='';for(let i=1;i<CP.length;i++){const w=(CP[i].dist-CP[i-1].dist)/TOT*100;const passed=arrivals.includes(i);let col='var(--card2)';if(passed){const prev=arrivals.filter(a=>a<i).pop();if(prev!=null){const dd=CP[i].dist-CP[prev].dist,dt=(arrT[i]-arrT[prev])/6e4;if(dd>0){const pace=dt/dd,t=CP[i].tr;let tMin=15,tMax=20;if(t==='up'){tMin=25;tMax=35}else if(t==='down'){tMin=12;tMax=18}col=pace<tMin?'var(--acc)':pace<=tMax?'var(--good)':pace<=tMax*1.3?'var(--warn)':'var(--dng)'}}}bar.innerHTML+=`<div class="ps2" style="flex:${w};background:${col};height:18px"></div>`}}
+function upRest(ms){const min=ms/6e4,last=arrivals.length?arrivals[arrivals.length-1]:-1;const fi=CP.findIndex(c=>c.isFk);if(last>=fi&&arrT[fi]!=null)return;if(last<0)return;const cS=CP[last].adjStd,fS=CP[fi].adjStd,gS=CP[CP.length-1].adjStd;const r=cS>0?min/cS:1;const efa=min+(fS-cS)*r,ep=(gS-fS)*r;const sH=sWall.getHours(),sM=sWall.getMinutes();const av=(tgH*60+tgM)-(sH*60+sM)-efa-ep;const el=document.getElementById('rT'),det=document.getElementById('rD'),w=document.getElementById('rW');if(av>=60){el.textContent=`約${Math.floor(av)}分`;el.style.color='var(--acc2)';det.textContent='ゆっくり食事OK';w.classList.add('hidden')}else if(av>=20){el.textContent=`約${Math.floor(av)}分`;el.style.color='var(--warn)';det.textContent='手早く';w.classList.add('hidden')}else{el.textContent=av>0?`${Math.floor(av)}分`:'不可';el.style.color='var(--dng)';det.textContent='';w.classList.remove('hidden');w.textContent='⚠️ ペースアップを'}}
+
+function arrive(idx){if(arrivals.includes(idx))return;const ms=eMs(),min=ms/6e4;arrivals.push(idx);arrT[idx]=ms;
+if(arrivals.length>=2){const prev=arrivals.filter(a=>a<idx).pop();if(prev!=null){const dd=CP[idx].dist-CP[prev].dist,dt=(arrT[idx]-arrT[prev])/6e4;if(dd>0)shPace(dt/dd,CP[idx].tr)}}
+document.getElementById('sD').textContent=CP[idx].dist.toFixed(1);
+const sd=min-CP[idx].adjStd,de=document.getElementById('sDf'),du=document.getElementById('sDu');
+if(Math.abs(sd)<5){de.textContent='±0';de.style.color='var(--good)';du.textContent='標準'}else if(sd<0){de.textContent=Math.round(Math.abs(sd))+'分';de.style.color='var(--good)';du.textContent='先行✨'}else{de.textContent='+'+Math.round(sd)+'分';de.style.color=sd>60?'var(--dng)':'var(--warn)';du.textContent='遅れ'}
+if(CP[idx].dist>0&&CP[idx].dist<TOT){const ap=min/CP[idx].dist,rem=TOT-CP[idx].dist,etaM=Math.round(rem*ap),h=Math.floor(etaM/60),m=etaM%60;document.getElementById('sE').textContent=h+':'+String(m).padStart(2,'0');if(sWall){const gd=new Date(sWall.getTime()+ms+etaM*6e4);document.getElementById('sG').textContent=gd.getHours()+':'+String(gd.getMinutes()).padStart(2,'0');document.getElementById('sG').style.color=(gd.getHours()>tgH||(gd.getHours()===tgH&&gd.getMinutes()>tgM))?'var(--dng)':'var(--good)'}}
+if(CP[idx].isFk){const fi=idx,gS=CP[CP.length-1].adjStd,fS=CP[fi].adjStd;const r=min/fS,ep=(gS-fS)*r;const rest=(tgH*60+tgM)-(sWall.getHours()*60+sWall.getMinutes())-min-ep;const el=document.getElementById('rT'),det=document.getElementById('rD');if(rest>=40){el.textContent=`🍙 ${Math.floor(rest)}分OK！`;el.style.color='var(--acc2)';det.textContent=`${Math.floor(rest)}分休んでも間に合います`}else if(rest>=15){el.textContent=Math.floor(rest)+'分';el.style.color='var(--warn)';det.textContent=Math.floor(rest)+'分以内で'}else{el.textContent=Math.max(0,Math.floor(rest))+'分';el.style.color='var(--dng)';det.textContent='すぐ出発'}}
+if(idx===CP.length-1){running=false;clearInterval(timerIv);stopG();shC('c0');document.getElementById('cB').classList.remove('hidden');document.getElementById('cT').textContent=fmt(ms);document.getElementById('cM2').textContent='29km完走おめでとう！';document.getElementById('sE').textContent='完了'}
 render()}
 
-function showPace(pace,terrain){const m=Math.floor(pace),s=Math.round((pace-m)*60);document.getElementById('paceVal').textContent=m+':'+String(s).padStart(2,'0');let tMin=15,tMax=20;if(terrain==='up'){tMin=25;tMax=35}else if(terrain==='down'){tMin=12;tMax=18}let st,cl,pos;if(pace<tMin*.6){st='⚡ 速すぎ';cl='var(--dng)';pos=5}else if(pace<tMin){st='🏃 速い';cl='var(--acc)';pos=25}else if(pace<=tMax){st='✅ 適正';cl='var(--good)';pos=50}else if(pace<=tMax*1.3){st='🐢 ゆっくり';cl='var(--warn)';pos=72}else{st='⏰ 遅れ';cl='var(--dng)';pos=90}document.getElementById('paceVal').style.color=cl;document.getElementById('pStat').textContent=`${st}（${terrain==='up'?'登り':terrain==='down'?'下り':'平坦'} ${tMin}-${tMax}分/km）`;document.getElementById('pStat').style.color=cl;document.getElementById('pMark').style.display='block';document.getElementById('pMark').style.left=pos+'%'}
+function shPace(pace,tr){const m=Math.floor(pace),s=Math.round((pace-m)*60);document.getElementById('pV').textContent=m+':'+String(s).padStart(2,'0');let tMin=15,tMax=20;if(tr==='up'){tMin=25;tMax=35}else if(tr==='down'){tMin=12;tMax=18}let st,cl,pos;if(pace<tMin*.6){st='⚡速すぎ';cl='var(--dng)';pos=5}else if(pace<tMin){st='🏃速い';cl='var(--acc)';pos=25}else if(pace<=tMax){st='✅適正';cl='var(--good)';pos=50}else if(pace<=tMax*1.3){st='🐢ゆっくり';cl='var(--warn)';pos=72}else{st='⏰遅れ';cl='var(--dng)';pos=90}document.getElementById('pV').style.color=cl;document.getElementById('pSt').textContent=`${st}（${tr==='up'?'登り':tr==='down'?'下り':'平坦'} ${tMin}-${tMax}分/km）`;document.getElementById('pSt').style.color=cl;document.getElementById('pM').style.display='block';document.getElementById('pM').style.left=pos+'%'}
 
-function render(){const list=document.getElementById('cpList');list.innerHTML='';const last=arrivals.length?arrivals[arrivals.length-1]:-1,next=last+1;CP.forEach((cp,i)=>{const passed=arrivals.includes(i),cur=i===next&&running,fut=!passed&&!cur;let cls='cp';if(passed)cls+=' passed';else if(cur)cls+=' current';else cls+=' future';const adjS=cp.adjStd||cp.std;let tgt='';if(adjS>0&&startWall){const t=new Date(startWall.getTime()+adjS*60000);tgt=`📍 目安 ${t.getHours()}:${String(t.getMinutes()).padStart(2,'0')}`}let rH='';if(passed&&i===0)rH='<span class="cp-stamp">START</span>';else if(passed)rH=`<span class="cp-stamp">${fmt(arrTimes[i])}</span>`;else if(cur)rH=`<button class="btn-arr" onclick="arrive(${i})">到着！</button>`;let res='';if(passed&&i>0){const prev=arrivals.filter(a=>a<i).pop();if(prev!=null){const dd=cp.dist-CP[prev].dist,dt=(arrTimes[i]-arrTimes[prev])/60000;if(dd>0){const p=dt/dd,pm=Math.floor(p),ps=Math.round((p-pm)*60);res=`<div class="cp-res">${pm}:${String(ps).padStart(2,'0')} 分/km（${Math.round(dt)}分/${dd.toFixed(1)}km）</div>`}}}const isL=i===CP.length-1;list.innerHTML+=`<div class="${cls}"><div class="cp-tk"><div class="cp-dot">${passed?'<svg viewBox="0 0 24 24" fill="none" stroke="#080f0b" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>':''}</div>${!isL?'<div class="cp-ln"></div>':''}</div><div class="cp-bd"><div class="cp-top"><div><div class="cp-nm">${cp.name}</div><div class="cp-mt">${cp.elev}m・${cp.dist}km・${cp.note}</div>${tgt?`<div class="cp-tgt">${tgt}</div>`:''}</div>${rH}</div>${res}</div></div>`});drawElev();if(running)updatePacing(elMs())}
+function render(){
+const list=document.getElementById('cpL');list.innerHTML='';const last=arrivals.length?arrivals[arrivals.length-1]:-1,next=last+1;
+CP.forEach((cp,i)=>{const passed=arrivals.includes(i),cur=i===next&&running,fut=!passed&&!cur;let cls='cp';if(passed)cls+=' p';else if(cur)cls+=' c';else cls+=' f';
+let tgt='';if(cp.adjStd>0&&sWall){const t=new Date(sWall.getTime()+cp.adjStd*6e4);tgt=`📍${t.getHours()}:${String(t.getMinutes()).padStart(2,'0')}`}
+let rH='';if(passed&&i===0)rH='<span class="cps2">START</span>';else if(passed)rH=`<span class="cps2">${fmt(arrT[i])}</span>`;else if(cur)rH=`<button class="ba" onclick="arrive(${i})">到着！</button>`;
+let res='';if(passed&&i>0){const prev=arrivals.filter(a=>a<i).pop();if(prev!=null){const dd=cp.dist-CP[prev].dist,dt=(arrT[i]-arrT[prev])/6e4;if(dd>0){const p=dt/dd,pm=Math.floor(p),ps=Math.round((p-pm)*60);res=`<div class="cpr">${pm}:${String(ps).padStart(2,'0')} /km（${Math.round(dt)}分/${dd.toFixed(1)}km）</div>`}}}
+const isL=i===CP.length-1;
+list.innerHTML+=`<div class="${cls}"><div class="cptk"><div class="cpd">${passed?'<svg viewBox="0 0 24 24" fill="none" stroke="#080f0b" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>':''}</div>${!isL?'<div class="cpl"></div>':''}</div><div class="cpb"><div class="cpt"><div><div class="cpn">${cp.name}</div><div class="cpm">${cp.elev}m・${cp.dist}km・${cp.note}</div>${tgt?`<div class="cptg">${tgt}</div>`:''}</div>${rH}</div>${res}</div></div>`});
+drawE();updateMap();if(running)upPac(eMs())}
 
-function drawElev(){const c=document.getElementById('elevC');if(!c)return;const ctx=c.getContext('2d'),dpr=window.devicePixelRatio||1,r=c.parentElement.getBoundingClientRect();c.width=r.width*dpr;c.height=r.height*dpr;c.style.width=r.width+'px';c.style.height=r.height+'px';ctx.scale(dpr,dpr);const W=r.width,H=r.height,pt=6,pb=16,cW=W,cH=H-pt-pb,maxE=950,minE=50;ctx.clearRect(0,0,W,H);ctx.beginPath();ELEV.forEach((p,i)=>{const x=p.d/TOT*cW,y=pt+cH-((p.e-minE)/(maxE-minE))*cH;i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.lineTo(cW,pt+cH);ctx.lineTo(0,pt+cH);ctx.closePath();const g=ctx.createLinearGradient(0,pt,0,pt+cH);g.addColorStop(0,'rgba(74,222,128,.15)');g.addColorStop(1,'rgba(74,222,128,.01)');ctx.fillStyle=g;ctx.fill();ctx.beginPath();ELEV.forEach((p,i)=>{const x=p.d/TOT*cW,y=pt+cH-((p.e-minE)/(maxE-minE))*cH;i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.strokeStyle='rgba(74,222,128,.5)';ctx.lineWidth=1.5;ctx.stroke();if(running&&startTs){const min=elMs()/60000,id=idealDist(min);let ie=80;for(let i=1;i<ELEV.length;i++)if(ELEV[i].d>=id){const p=ELEV[i-1],c2=ELEV[i],t=(id-p.d)/(c2.d-p.d);ie=p.e+t*(c2.e-p.e);break};const ix=id/TOT*cW,iy=pt+cH-((ie-minE)/(maxE-minE))*cH;ctx.beginPath();ctx.arc(ix,iy,3,0,Math.PI*2);ctx.fillStyle='rgba(74,222,128,.4)';ctx.fill()}const last=arrivals.length?arrivals[arrivals.length-1]:-1;if(last>=0){const d=CP[last].dist,e=CP[last].elev,x=d/TOT*cW,y=pt+cH-((e-minE)/(maxE-minE))*cH;ctx.beginPath();ctx.arc(x,y,4,0,Math.PI*2);ctx.fillStyle='#fff';ctx.fill();ctx.beginPath();ctx.arc(x,y,2.5,0,Math.PI*2);ctx.fillStyle='#2dd4bf';ctx.fill()}ctx.font='8px DM Mono';ctx.fillStyle='rgba(107,148,120,.5)';ctx.textAlign='left';ctx.fillText('駐車場',2,H-2);ctx.textAlign='center';ctx.fillText('福智山',18.5/TOT*cW,H-2);ctx.textAlign='right';ctx.fillText('採銅所',W-2,H-2)}
+function drawE(){const c=document.getElementById('eC');if(!c)return;const ctx=c.getContext('2d'),dpr=window.devicePixelRatio||1,r=c.parentElement.getBoundingClientRect();const W=r.width-16,H=90;c.width=W*dpr;c.height=H*dpr;c.style.width=W+'px';c.style.height=H+'px';ctx.scale(dpr,dpr);const pt=4,pb=14,cW=W,cH=H-pt-pb,maxE=950,minE=50;ctx.clearRect(0,0,W,H);
+ctx.beginPath();EL.forEach((p,i)=>{const x=p.d/TOT*cW,y=pt+cH-((p.e-minE)/(maxE-minE))*cH;i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.lineTo(cW,pt+cH);ctx.lineTo(0,pt+cH);ctx.closePath();const g=ctx.createLinearGradient(0,pt,0,pt+cH);g.addColorStop(0,'rgba(74,222,128,.15)');g.addColorStop(1,'rgba(74,222,128,.01)');ctx.fillStyle=g;ctx.fill();
+ctx.beginPath();EL.forEach((p,i)=>{const x=p.d/TOT*cW,y=pt+cH-((p.e-minE)/(maxE-minE))*cH;i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.strokeStyle='rgba(74,222,128,.5)';ctx.lineWidth=1.5;ctx.stroke();
+const last=arrivals.length?arrivals[arrivals.length-1]:-1;if(last>=0){const d=CP[last].dist,e=CP[last].elev,x=d/TOT*cW,y=pt+cH-((e-minE)/(maxE-minE))*cH;ctx.beginPath();ctx.arc(x,y,4,0,Math.PI*2);ctx.fillStyle='#fff';ctx.fill();ctx.beginPath();ctx.arc(x,y,2.5,0,Math.PI*2);ctx.fillStyle='#2dd4bf';ctx.fill()}
+ctx.font='7px DM Mono';ctx.fillStyle='rgba(107,148,120,.5)';ctx.textAlign='left';ctx.fillText('駐車場',2,H-2);ctx.textAlign='center';ctx.fillText('福智山',18.5/TOT*cW,H-2);ctx.textAlign='right';ctx.fillText('採銅所',W-2,H-2)}
 
-// ══════ INIT ══════
-updateSunsetCalc();
-updateSunset();setInterval(updateSunset,30000);
-window.addEventListener('resize',drawElev);
+updSS();upSun();setInterval(upSun,3e4);window.addEventListener('resize',()=>{drawE();buildMap()})
 </script>
 </body>
 </html>
